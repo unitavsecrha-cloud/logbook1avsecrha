@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Check</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="paper">
+    <header>
+        <h1> CHECK LIST PENGUJIAN HARIAN  </h1>
+        <p> MESIN X-RAY BAGASI SINGLE VIEW </p>
+        <p> PADA KONDISI NORMAL (HIJAU)</p>
+        <p> LEMBAR 1 DARI 1</p>
+    </header>
+<main>
+    <h2>Data Pemeriksaan</h2>
+
+<table>
+    <tr>
+        <td>Nama Operator Penerbangan</td>
+        <td>:</td>
+        <td>UPBU Raja Haji Abdullah</td>
+    </tr>
+    <tr>
+        <td>Tanggal & Waktu Pengujian</td>
+        <td>:</td>  
+        <td><input type=datetime-local></td>
+    </tr>
+    <tr>
+        <td> Lokasi Penempatan/Gedung</td>
+        <td>:</td>
+        <td> Gedung Terminal Keberangkatan</td>
+    </tr>
+    <tr>
+        <td> Merk/Type/Nomor Sertifikat</td>
+        <td>:</td>
+        <td> Astrophysics /ASTAPA180LLD498</td>
+    </tr>
+    <tr>
+        <td> Nomor & Tanggal Sertifikat</td>
+        <td>:</td>
+        <td> 23 November 2016 </td>
+    </tr>
+
+</table>
+
+<div class="gambar-test">
+    <img src="image/stpform.jpeg" 
+    alt="Gambar Form Pemeriksaan X-Ray" 
+    class="gambar-form">
+<input type="checkbox" class = "cek test1a">
+<input type="checkbox" class = "cek test1aa">
+<input type="checkbox" class = "cek test1b">
+<input type="checkbox" class = "cek test1bb">
+<input type="checkbox" class = "cek test1bbb">
+<input type="checkbox" class = "cek test1bbbb">
+<input type="checkbox" class = "cek test2a">
+<input type="checkbox" class = "cek test2b">
+<input type="checkbox" class = "cek test3a">
+<input type="checkbox" class = "cek test3aa">
+<input type="checkbox" class = "cek test3aaa">
+<input type="checkbox" class = "cek test3aaaa">
+<input type="checkbox" class = "cek test3aaaaa">
+<input type="checkbox" class = "cek test4a">
+<input type="checkbox" class = "cek test4aa">
+<input type="checkbox" class = "cek test5a">
+<input type="checkbox" class = "cek test5aa">
+</div>
+
+<div class = "hasil-box">
+<h3>Hasil Pemeriksaan</h3>
+<label>
+    <input type="checkbox" name="hasil" value="PASS"> PASS
+</label>
+<label>
+    <input type="checkbox" name="hasil" value="FAIL"> FAIL
+</label>
+
+<h3>Catatan</h3>
+<textarea name="catatan" rows="5" cols="115" placeholder="Masukkan catatan pemeriksaan..."></textarea>
+</div>
+
+<h3>Personel Pengamanan Penerbangan</h3>
+<table style="width:100%;">
+<tr>
+<th align="left">Nama Petugas</th>
+<th align="left">Tanda Tangan</th>
+</tr>
+
+<tr> 
+<td>
+<input type="text" name="petugas1" placeholder="Nama Petugas 1">
+</td>
+
+<td align="center">
+    ______________
+</td>
+</tr>
+
+<td>
+    <input type="text" name="petugas2" placeholder="Nama Petugas 2">
+</td>
+
+<td align="center">
+    ______________
+</td>
+
+</table>
+<br><br>
+<button type="button">Simpan</button>
+<button type="button" onclick="window.print()">Cetak</button>
+<button type="button" onclick="window.location.href='index.html'">Kembali</button>
+</main>
+</body>
+</html>

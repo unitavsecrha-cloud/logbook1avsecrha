@@ -1,0 +1,215 @@
+body {background-image : url("image/polosan.png");
+font-family: Arial, Helvetica, sans-serif;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;}
+
+header {background-color :#003366;
+color :white;
+text-align :center;
+padding :25px;}
+
+
+.judul-menu h2{
+    text-align :center;
+    color :#000000;
+    margin-top : 20px;
+}
+
+.judul-menu p{
+    text-align :center;
+    color :#03243a;
+    margin-top : 10px;
+}
+.panduan{
+    text-align :center;
+    margin-top : 20px;
+}
+
+.panduan p{
+    max-width : 600px;
+    margin : 0 auto;
+    line-height : 1.5;
+    color :#003366;
+}
+nav button {
+    background-color : white;
+    color :#003366;
+    border :none;
+    padding :10px 20px;
+    margin :5px;
+    border-radius: 8px;
+    cursor :pointer;
+    font-weight :bold;
+}
+
+nav button:hover {
+    background-color :#003366;
+    color :white;
+}
+
+.menu-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px;
+}
+
+.menu-card {
+    background-color: rgb(172, 182, 241);
+    width: 300px;
+    min-height: 200px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+.menu-card:hover {
+    transform: translateY(-5px);
+}
+
+.menu-card button{
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+/* DAILY CHECK */
+.paper {
+    background-color: white;
+    width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+td, th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+input {
+    width: 100%;
+    padding: 7px;
+    box-sizing: border-box;
+}
+
+.gambar-test {
+    position : relative;
+    display : inline-block;
+}   
+.gambar-form{
+    width : 900px;
+    display : block;
+}
+.cek{
+    position : absolute;
+    width : 20px;
+    height : 20px;
+}
+.test1a{
+    top : 380px; 
+    left : 121px;
+}
+.test1aa{
+    top : 340px; 
+    left : 121px;
+}
+.test1b{
+    top : 380px; 
+    left : 193px;
+}
+.test1bb{
+    top : 340px; 
+    left : 193px;
+}
+
+.test1bbb{
+    top : 380px; 
+    left : 255px;
+}
+
+.test1bbbb{
+    top : 380px; 
+    left : 325px;
+}
+
+.test2a{
+    top : 88px; 
+    left : 240px;}
+
+.test2b{
+    top : 187px; 
+    left : 367px;
+}
+
+.test3a{
+    top : 89px; 
+    left :398px;
+}
+
+.test3aa{
+    top : 89px; 
+    left : 448px;
+}
+
+.test3aaa{
+    top : 89px; 
+    left : 495px;
+}
+
+.test3aaaa{
+    top : 89px; 
+    left : 544px;
+}
+
+.test3aaaaa{
+    top : 89px; 
+    left : 592px;
+}
+
+.test4a{
+    top : 310px; 
+    left : 528px;
+}
+
+.test4aa{
+    top : 314px; 
+    left : 644px;
+}
+
+.test5a{
+    top : 239px; 
+    left : 775px;
+}
+
+.test5aa{
+    top : 305px; 
+    left : 775px;
+}
+
+.hasil-box {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #d1cccc;
+    background-color: #f9f9f9;
+}
+
+/*PATROLI*/
+.ttd{
+    height: 100px;
+    vertical-align: top;
+    padding-top: 10px;
+}
+
