@@ -1807,3 +1807,71 @@ body > .paper {
     gap: 12px;
     margin: 0 auto;
 }
+/* RESPONSIVE HP - DASHBOARD */
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    body > header {
+        width: 100%;
+        margin-left: 0;
+        height: 150px;
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    header p {
+        font-size: 11px;
+    }
+
+    .digital-title {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .digital-lines,
+    .aviation-decoration,
+    .airport-silhouette {
+        display: none;
+    }
+
+    .judul-menu h2,
+    .judul-menu p {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #gridMenu {
+        width: auto;
+        margin: 15px 12px 25px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    #gridMenu .menu-card {
+        width: 100%;
+        min-height: 170px;
+        box-sizing: border-box;
+    }
+
+    .menu-bottom {
+        transform: none;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .dashboard-welcome {
+        width: auto;
+        margin: 15px 12px;
+    }
+
+    .profile-area {
+        top: 15px;
+        right: 12px;
+    }
+}
