@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip PDF | Digital Logbook</title>
+    <link rel="stylesheet" href="arsip.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+        <strong>DIGITAL LOGBOOK</strong>
+        <span>AVIATION SECURITY</span>
+    </div>
+
+    <div class="sidebar-title">MENU UTAMA</div>
+
+    <button onclick="window.location.href='index.html'">
+        🏠 Dashboard
+    </button>
+
+    <div class="sidebar-menu-group">
+
+        <button type="button" class="sidebar-menu-toggle" id="btnLogbook">
+            📋 LOGBOOK
+            <span>▾</span>
+        </button>
+
+        <div class="sidebar-submenu" id="submenuLogbook">
+
+            <button onclick="window.location.href='bagasi.html'">
+                X-Ray Bagasi
+            </button>
+
+            <button onclick="window.location.href='cabin.html'">
+                X-Ray Cabin
+            </button>
+
+            <button onclick="window.location.href='cctv.html'">
+                CCTV
+            </button>
+
+            <button onclick="window.location.href='patroli.html'">
+                Patroli
+            </button>
+
+            <button onclick="window.location.href='hhmd.html'">
+                Pemeriksaan HHMD
+            </button>
+
+            <button onclick="window.location.href='wtmd.html'">
+                Pemeriksaan WTMD
+            </button>
+
+            <button onclick="window.location.href='pos.html'">
+                Pos Jaga
+            </button>
+        </div>
+
+    </div>
+
+    <div class="sidebar-title">LAINNYA</div>
+
+    <button onclick="window.location.href='index.html'">
+        📊 Statistik
+    </button>
+
+    <button onclick="window.location.href='arsip.html'">
+        📁 Arsip PDF
+    </button>
+
+    <button onclick="logout()">
+        🚪 Logout
+    </button>
+
+</div>
+
+<button class="sidebar-toggle" id="sidebarToggle">☰</button>
+<header>
+    <div class="header-center">
+        <div class="digital-title">DIGITAL LOGBOOK SYSTEM</div>
+        <h1>ARSIP PDF LOGBOOK</h1>
+        <p>Arsip dokumen Digital Logbook Aviation Security</p>
+        <p>Bandar Udara Raja Haji Abdullah</p>
+    </div>
+</header>
+
+<main>
+    <div class="judul-menu">
+        <h2>Arsip PDF</h2>
+        <p>Pilih dokumen logbook yang ingin dilihat.</p>
+    </div>
+
+    <div class="arsip-container">
+
+        <div class="arsip-card">
+            <div class="arsip-icon">📄</div>
+            <div class="arsip-info">
+                <h3>Daily Check X-Ray Bagasi</h3>
+                <p>Arsip PDF pemeriksaan X-Ray Bagasi</p>
+            </div>
+            <button type="button" onclick="lihatArsipBagasi()">Lihat Arsip</button>
+        </div>
+
+        <div class="arsip-card">
+            <div class="arsip-icon">📄</div>
+            <div class="arsip-info">
+                <h3>Daily Check X-Ray Cabin</h3>
+                <p>Arsip PDF pemeriksaan X-Ray Cabin</p>
+            </div>
+            <button type="button" onclick="lihatArsipCabin()">Lihat Arsip</button>
+        </div>
+     
+
+        <div class="arsip-card">
+            <div class="arsip-icon">📹</div>
+            <div class="arsip-info">
+                <h3>Logbook CCTV</h3>
+                <p>Arsip PDF Logbook CCTV</p>
+            </div>
+            <button type="button" onclick="lihatArsipCctv()">Lihat Arsip</button>
+        </div>
+
+        <div class="arsip-card">
+            <div class="arsip-icon">🛡️</div>
+            <div class="arsip-info">
+                <h3>Logbook Patroli</h3>
+                <p>Arsip PDF Logbook Patroli</p>
+            </div>
+            <button type="button" onclick="lihatArsipPatroli()">Lihat Arsip</button>
+        </div>
+
+        <div class="arsip-card">
+            <div class="arsip-icon">🔍</div>
+            <div class="arsip-info">
+                <h3>Pemeriksaan HHMD</h3>
+                <p>Arsip PDF pemeriksaan HHMD</p>
+            </div>
+            <button type="button" onclick="lihatArsipHhmd()">Lihat Arsip</button>
+        </div>
+
+        <div class="arsip-card">
+            <div class="arsip-icon">🔍</div>
+            <div class="arsip-info">
+                <h3>Pemeriksaan WTMD</h3>
+                <p>Arsip PDF pemeriksaan WTMD</p>
+            </div>
+            <button type="button" onclick="lihatArsipWtmd()">Lihat Arsip</button>
+        </div>
+
+        <div class="arsip-card">
+            <div class="arsip-icon">📤</div>
+            <div class="arsip-info">
+                <h3>Pos Jaga</h3>
+                <p>Arsip PDF Pos Jaga</p>
+            </div>
+            <button type="button" onclick="lihatArsipPos()">Lihat Arsip</button>
+        </div>
+    </div>
+      
+    <div id="daftarArsipBagasi"></div>
+     <div id="daftarArsipCabin"></div>
+     <div id="daftarArsipCctv"></div>
+     <div id="daftarArsipPatroli"></div>
+     <div id="daftarArsipHhmd"></div>
+     <div id="daftarArsipWtmd"></div>
+     <div id="daftarArsipPos"></div>
+
+     <a href="index.html" class="btn-kembali">← Kembali ke Menu Utama</a>
+</main>
+
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbymBHdinwQXvV0Sqap56TW5Fsfnqs_gfu99jR6Kspu1a0sbWIF-CnSmKW983sRME3s7/exec";
+
+function lihatArsipBagasi() {
+    const container = document.getElementById("daftarArsipBagasi");
+
+    container.style.display = "block";
+
+    container.innerHTML = `
+        <div class="arsip-list">
+            <h2>📁 Arsip X-Ray Bagasi</h2>
+            <p class="loading-arsip">Memuat arsip...</p>
+        </div>
+    `;
+
+    fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify({
+            action: "arsipBagasi"
+        })
+    })
+    .then(async response => {
+    const text = await response.text();
+    console.log("RESPON MENTAH SERVER:", text);
+    return JSON.parse(text);
+})
+    .then(data => {
+        console.log("ARSIP BAGASI:", data);
+
+        if (data.status !== "success") {
+            container.innerHTML = `
+                <div class="arsip-list">
+                    <h2>📁 Arsip X-Ray Bagasi</h2>
+                    <p>Gagal mengambil arsip.</p>
+                </div>
+            `;
+            return;
+        }
+
+        const kelompok = {};
+
+        data.arsip.forEach(file => {
+            const namaFolder = file.folder || "ARSIP LAMA";
+
+            if (!kelompok[namaFolder]) {
+                kelompok[namaFolder] = [];
+            }
+
+            kelompok[namaFolder].push(file);
+        });
+
+        let html = `
+            <div class="arsip-list">
+                <div class="arsip-list-header">
+                    <h2>📁 Arsip X-Ray Bagasi</h2>
+                    <span>${data.arsip.length} file</span>
+                </div>
+        `;
+
+        Object.keys(kelompok).forEach(namaFolder => {
+
+            html += `
+                <div class="arsip-folder">
+                    <div class="arsip-folder-header">
+                        <span>📁</span>
+                        <strong>${namaFolder}</strong>
+                    </div>
+            `;
+
+            kelompok[namaFolder].forEach(file => {
+
+                const tanggal = new Date(file.tanggal).toLocaleDateString("id-ID", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric"
+                });
+
+                html += `
+                    <div class="arsip-item">
+                        <div class="file-info">
+                            <div class="file-icon">📄</div>
+                            <div>
+                                <strong>${file.nama}</strong>
+                                <span>${tanggal}</span>
+                            </div>
+                        </div>
+
+                        <a href="${file.url}" target="_blank" class="btn-pdf">
+                            Buka PDF
+                        </a>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+        });
+
+        html += `</div>`;
+
+        container.innerHTML = html;
+    })
+    .catch(error => {
+        console.error("ERROR:", error);
+
+        container.innerHTML = `
+            <div class="arsip-list">
+                <h2>📁 Arsip X-Ray Bagasi</h2>
+                <p class="error-arsip">❌ Tidak dapat terhubung ke server.</p>
+            </div>
+        `;
+    });
+}
+
+function lihatArsipCabin() {
+    const container = document.getElementById("daftarArsipCabin");
+
+    container.style.display = "block";
+
+    container.innerHTML = `
+        <div class="arsip-list">
+            <h2>📁 Arsip X-Ray Cabin</h2>
+            <p class="loading-arsip">Memuat arsip...</p>
+        </div>
+    `;
+
+    fetch("https://script.google.com/macros/s/AKfycbzdiGUrAkx7XOKLtY_lnr1NlcNZoaaBentHUtgGdcr6pW6Nxfv0XGL2HMYbXzWerCj7/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            action: "arsipCabin"
+        })
+    })
+    .then(async response => {
+        const text = await response.text();
+        console.log("RESPON MENTAH CABIN:", text);
+        return JSON.parse(text);
+    })
+    .then(data => {
+        console.log("ARSIP CABIN:", data);
+
+        if (data.status !== "success") {
+            throw new Error(data.message || "Gagal mengambil arsip Cabin");
+        }
+
+        const container = document.getElementById("daftarArsipCabin");
+
+        if (!data.arsip || data.arsip.length === 0) {
+            container.innerHTML = `
+                <div class="arsip-list">
+                    <h2>📁 Arsip X-Ray Cabin</h2>
+                    <p class="loading-arsip">Belum ada arsip PDF.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let html = `
+            <div class="arsip-list">
+                <div class="arsip-list-header">
+                    <h2>📁 Arsip X-Ray Cabin</h2>
+                    <span>${data.arsip.length} PDF</span>
+                </div>
+        `;
+
+        data.arsip.forEach(file => {
+            html += `
+                <div class="arsip-item">
+                    <div class="file-info">
+                        <div class="file-icon">📄</div>
+                        <div>
+                            <strong>${file.nama}</strong>
+                            <span>${file.folder}</span>
+                        </div>
+                    </div>
+                    <a href="${file.url}" target="_blank" class="btn-pdf">
+                        Buka PDF
+                    </a>
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+
+        container.innerHTML = html;
+    })
+    .catch(error => {
+        console.error("ERROR ARSIP CABIN:", error);
+
+        document.getElementById("daftarArsipCabin").innerHTML = `
+            <div class="arsip-list">
+                <p class="error-arsip">
+                    Gagal memuat arsip Cabin.
+                </p>
+            </div>
+        `;
+    });
+}
+/*arsip wtmd*/
+
+function lihatArsipWtmd() {
+    const container = document.getElementById("daftarArsipWtmd");
+
+    container.style.display = "block";
+
+    container.innerHTML = `
+        <div class="arsip-list">
+            <h2>📁 Arsip X-Ray WTMD</h2>
+            <p class="loading-arsip">Memuat arsip...</p>
+        </div>
+    `;
+
+    fetch("https://script.google.com/macros/s/AKfycbxrfkFmrmHE4xNPQX8czxoCePYvI7f_rDrW34Z_RGmtZA5f_y3EqwTiPbbzPTUj8AA5kg/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            action: "arsipWtmd"
+        })
+    })
+    .then(async response => {
+        const text = await response.text();
+        console.log("RESPON MENTAH WTMD:", text);
+        return JSON.parse(text);
+    })
+    .then(data => {
+        console.log("ARSIP WTMD:", data);
+
+        if (data.status !== "success") {
+            throw new Error(data.message || "Gagal mengambil arsip WTMD");
+        }
+
+        const container = document.getElementById("daftarArsipWtmd");
+
+        if (!data.arsip || data.arsip.length === 0) {
+            container.innerHTML = `
+                <div class="arsip-list">
+                    <h2>📁 Arsip X-Ray WTMD</h2>
+                    <p class="loading-arsip">Belum ada arsip PDF.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let html = `
+            <div class="arsip-list">
+                <div class="arsip-list-header">
+                    <h2>📁 Arsip X-Ray WTMD</h2>
+                    <span>${data.arsip.length} PDF</span>
+                </div>
+        `;
+
+        data.arsip.forEach(file => {
+            html += `
+                <div class="arsip-item">
+                    <div class="file-info">
+                        <div class="file-icon">📄</div>
+                        <div>
+                            <strong>${file.nama}</strong>
+                            <span>${file.folder}</span>
+                        </div>
+                    </div>
+                    <a href="${file.url}" target="_blank" class="btn-pdf">
+                        Buka PDF
+                    </a>
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+
+        container.innerHTML = html;
+    })
+    .catch(error => {
+        console.error("ERROR ARSIP WTMD:", error);
+
+        document.getElementById("daftarArsipWtmd").innerHTML = `
+            <div class="arsip-list">
+                <p class="error-arsip">
+                    Gagal memuat arsip WTMD.
+                </p>
+            </div>
+        `;
+    });
+}
+
+/*arsip hhmd*/
+
+function lihatArsipHhmd() {
+    const container = document.getElementById("daftarArsipHhmd");
+
+    container.style.display = "block";
+
+    container.innerHTML = `
+        <div class="arsip-list">
+            <h2>📁 Arsip X-Ray HHMD</h2>
+            <p class="loading-arsip">Memuat arsip...</p>
+        </div>
+    `;
+
+    fetch("https://script.google.com/macros/s/AKfycbxBR6buyICTMzOz1wOpD0oyWzecwfqpIEyAQyq-0byVWmpdDNYxYbWBGlxOYV166LxllQ/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            action: "arsipHhmd"
+        })
+    })
+    .then(async response => {
+        const text = await response.text();
+        console.log("RESPON MENTAH HHMD:", text);
+        return JSON.parse(text);
+    })
+    .then(data => {
+        console.log("ARSIP HHMD:", data);
+
+        if (data.status !== "success") {
+            throw new Error(data.message || "Gagal mengambil arsip HHMD");
+        }
+
+        const container = document.getElementById("daftarArsipHhmd");
+
+        if (!data.arsip || data.arsip.length === 0) {
+            container.innerHTML = `
+                <div class="arsip-list">
+                    <h2>📁 Arsip X-Ray HHMD</h2>
+                    <p class="loading-arsip">Belum ada arsip PDF.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let html = `
+            <div class="arsip-list">
+                <div class="arsip-list-header">
+                    <h2>📁 Arsip X-Ray HHMD</h2>
+                    <span>${data.arsip.length} PDF</span>
+                </div>
+        `;
+
+        data.arsip.forEach(file => {
+            html += `
+                <div class="arsip-item">
+                    <div class="file-info">
+                        <div class="file-icon">📄</div>
+                        <div>
+                            <strong>${file.nama}</strong>
+                            <span>${file.folder}</span>
+                        </div>
+                    </div>
+                    <a href="${file.url}" target="_blank" class="btn-pdf">
+                        Buka PDF
+                    </a>
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+
+        container.innerHTML = html;
+    })
+    .catch(error => {
+        console.error("ERROR ARSIP HHMD:", error);
+
+        document.getElementById("daftarArsipHhmd").innerHTML = `
+            <div class="arsip-list">
+                <p class="error-arsip">
+                    Gagal memuat arsip HHMD.
+                </p>
+            </div>
+        `;
+    });
+}
+
+/*arsip cctv*/
+
+function lihatArsipCctv() {
+    const container = document.getElementById("daftarArsipCctv");
+
+    container.style.display = "block";
+
+    container.innerHTML = `
+        <div class="arsip-list">
+            <h2>📁 Arsip X-Ray CCTV</h2>
+            <p class="loading-arsip">Memuat arsip...</p>
+        </div>
+    `;
+
+    fetch("https://script.google.com/macros/s/AKfycbwOCWzjiSGtmoik2lVUkMruglhxEkh1XTylw4BIE9gYdJuC38hY7WfrmB4MvMFXONYjVg/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            action: "arsipCctv"
+        })
+    })
+    .then(async response => {
+        const text = await response.text();
+        console.log("RESPON MENTAH CCTV:", text);
+        return JSON.parse(text);
+    })
+    .then(data => {
+        console.log("ARSIP CCTV:", data);
+
+        if (data.status !== "success") {
+            throw new Error(data.message || "Gagal mengambil arsip CCTV");
+        }
+
+        const container = document.getElementById("daftarArsipCctv");
+
+        if (!data.arsip || data.arsip.length === 0) {
+            container.innerHTML = `
+                <div class="arsip-list">
+                    <h2>📁 Arsip X-Ray CCTV</h2>
+                    <p class="loading-arsip">Belum ada arsip PDF.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let html = `
+            <div class="arsip-list">
+                <div class="arsip-list-header">
+                    <h2>📁 Arsip X-Ray CCTV</h2>
+                    <span>${data.arsip.length} PDF</span>
+                </div>
+        `;
+
+        data.arsip.forEach(file => {
+            html += `
+                <div class="arsip-item">
+                    <div class="file-info">
+                        <div class="file-icon">📄</div>
+                        <div>
+                            <strong>${file.nama}</strong>
+                            <span>${file.folder}</span>
+                        </div>
+                    </div>
+                    <a href="${file.url}" target="_blank" class="btn-pdf">
+                        Buka PDF
+                    </a>
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+
+        container.innerHTML = html;
+    })
+    .catch(error => {
+        console.error("ERROR ARSIP CCTV:", error);
+
+        document.getElementById("daftarArsipCctv").innerHTML = `
+            <div class="arsip-list">
+                <p class="error-arsip">
+                    Gagal memuat arsip CCTV.
+                </p>
+            </div>
+        `;
+    });
+}
+/*arsip patroli*/
+
+function lihatArsipPatroli() {
+    const container = document.getElementById("daftarArsipPatroli");
+
+    container.style.display = "block";
+
+    container.innerHTML = `
+        <div class="arsip-list">
+            <h2>📁 Arsip X-Ray Patroli</h2>
+            <p class="loading-arsip">Memuat arsip...</p>
+        </div>
+    `;
+
+    fetch("https://script.google.com/macros/s/AKfycbwfv5kQPoJdDpk0jflAOrR34-A_HEJlr0H2OLN4cKhyV8LIQuoBe90e90K_puNwz4Wn/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            action: "arsipPatroli"
+        })
+    })
+    .then(async response => {
+        const text = await response.text();
+        console.log("RESPON MENTAH PATROLI:", text);
+        return JSON.parse(text);
+    })
+    .then(data => {
+        console.log("ARSIP PATROLI:", data);
+
+        if (data.status !== "success") {
+            throw new Error(data.message || "Gagal mengambil arsip Patroli");
+        }
+
+        const container = document.getElementById("daftarArsipPatroli");
+
+        if (!data.arsip || data.arsip.length === 0) {
+            container.innerHTML = `
+                <div class="arsip-list">
+                    <h2>📁 Arsip X-Ray Patroli</h2>
+                    <p class="loading-arsip">Belum ada arsip PDF.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let html = `
+            <div class="arsip-list">
+                <div class="arsip-list-header">
+                    <h2>📁 Arsip X-Ray Patroli</h2>
+                    <span>${data.arsip.length} PDF</span>
+                </div>
+        `;
+
+        data.arsip.forEach(file => {
+            html += `
+                <div class="arsip-item">
+                    <div class="file-info">
+                        <div class="file-icon">📄</div>
+                        <div>
+                            <strong>${file.nama}</strong>
+                            <span>${file.folder}</span>
+                        </div>
+                    </div>
+                    <a href="${file.url}" target="_blank" class="btn-pdf">
+                        Buka PDF
+                    </a>
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+
+        container.innerHTML = html;
+    })
+    .catch(error => {
+        console.error("ERROR ARSIP PATROLI:", error);
+
+        document.getElementById("daftarArsipPatroli").innerHTML = `
+            <div class="arsip-list">
+                <p class="error-arsip">
+                    Gagal memuat arsip Patroli.
+                </p>
+            </div>
+        `;
+    });
+}
+
+
+const WEB_APP_URL_POS = "https://script.google.com/macros/s/AKfycbzQmQpmPZuui5-NH7qPuObKJkQFPSfdcVeafAucecOPkXquG07Lw79qhbO5FWO4724-dQ/exec";
+
+function lihatArsipPos() {
+    const container = document.getElementById("daftarArsipPos");
+
+    container.style.display = "block";
+
+    container.innerHTML = `
+        <div class="arsip-list">
+            <h2>📤 Arsip Jaga Pos</h2>
+            <p class="loading-arsip">Memuat arsip...</p>
+        </div>
+    `;
+
+    fetch(WEB_APP_URL_POS, {
+        method: "POST",
+        body: JSON.stringify({
+            action: "arsipPos"
+        })
+    })
+    .then(async response => {
+    const text = await response.text();
+    console.log("RESPON MENTAH SERVER:", text);
+    return JSON.parse(text);
+})
+    .then(data => {
+        console.log("ARSIP POS:", data);
+
+        if (data.status !== "success") {
+            container.innerHTML = `
+                <div class="arsip-list">
+                    <h2>📤 Arsip Pos</h2>
+                    <p>Gagal mengambil arsip.</p>
+                </div>
+            `;
+            return;
+        }
+
+        const kelompok = {};
+
+        data.arsip.forEach(file => {
+            const namaFolder = file.folder || "ARSIP LAMA";
+
+            if (!kelompok[namaFolder]) {
+                kelompok[namaFolder] = [];
+            }
+
+            kelompok[namaFolder].push(file);
+        });
+
+        let html = `
+            <div class="arsip-list">
+                <div class="arsip-list-header">
+                    <h2>📤 Arsip Pos</h2>
+                    <span>${data.arsip.length} file</span>
+                </div>
+        `;
+
+        Object.keys(kelompok).forEach(namaFolder => {
+
+            html += `
+                <div class="arsip-folder">
+                    <div class="arsip-folder-header">
+                        <span>📤</span>
+                        <strong>${namaFolder}</strong>
+                    </div>
+            `;
+
+            kelompok[namaFolder].forEach(file => {
+
+                const tanggal = new Date(file.tanggal).toLocaleDateString("id-ID", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric"
+                });
+
+                html += `
+                    <div class="arsip-item">
+                        <div class="file-info">
+                            <div class="file-icon">📤</div>
+                            <div>
+                                <strong>${file.nama}</strong>
+                                <span>${tanggal}</span>
+                            </div>
+                        </div>
+
+                        <a href="${file.url}" target="_blank" class="btn-pdf">
+                            Buka PDF
+                        </a>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+        });
+
+        html += `</div>`;
+
+        container.innerHTML = html;
+    })
+    .catch(error => {
+        console.error("ERROR:", error);
+
+        container.innerHTML = `
+            <div class="arsip-list">
+                <h2>📤 Arsip Pos</h2>
+                <p class="error-arsip">❌ Tidak dapat terhubung ke server.</p>
+            </div>
+        `;
+    });
+}
+
+// SIDEBAR MOBILE
+document.getElementById("sidebarToggle").onclick = function () {
+    document.getElementById("sidebar").classList.toggle("active");
+};
+
+// SUBMENU LOGBOOK
+document.getElementById("btnLogbook").onclick = function () {
+    const submenu = document.getElementById("submenuLogbook");
+
+    submenu.classList.toggle("active");
+    this.classList.toggle("active");
+};
+
+// LOGOUT
+function logout() {
+    localStorage.removeItem("nama");
+    localStorage.removeItem("role");
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header-logbook">
+
+<header class="header-logbook">
     <div class="header-content">
         <div class="digital-title">DIGITAL LOGBOOK SYSTEM</div>
         <h1>CHECK LIST PENGUJIAN HARIAN</h1>
-        <p>MESIN X-RAY KABIN SINGLE VIEW</p>
+        <p>PENDETEKSI LOGAM GENGGAM</p>
+        <p>(HAND HELD METAL DETECTOR / HHMD)</p>
         <p>PADA KONDISI NORMAL (HIJAU)</p>
         <p>LEMBAR 1 DARI 1</p>
     </div>
-    </header>
-    <div class="paper logbook-cabin">
+</header>
+
+<div class="paper logbook">
+
 <main>
     <h2>Data Pemeriksaan</h2>
 
@@ -24,12 +28,12 @@
     <tr>
         <td>Nama Operator Penerbangan</td>
         <td>:</td>
-        <td>Kantor UPBU Raja Haji Abdullah</td>
+        <td>UPBU Raja Haji Abdullah</td>
     </tr>
     <tr>
         <td>Tanggal & Waktu Pengujian</td>
         <td>:</td>  
-        <td><input type="datetime-local" id="tanggal"></td>
+        <td><input type="datetime-local" id="tanggal" name="tanggal"></td>
     </tr>
     <tr>
         <td> Lokasi Penempatan/Gedung</td>
@@ -39,57 +43,36 @@
     <tr>
         <td> Merk/Type/Nomor Sertifikat</td>
         <td>:</td>
-        <td> Smith Detection/Hi-Scan604si/214707</td>
+        <td> Garret Handheld Security Detector 1165180</td>
     </tr>
     <tr>
         <td> Nomor & Tanggal Sertifikat</td>
         <td>:</td>
-        <td> S/XR-C.B050/DKP/XII/2025 </td>
+        <td>  </td>
     </tr>
 
 </table>
 
-<div class="gambar-test">
-    <img src="image/cabinform.jpeg" 
-    alt="Gambar Form Pemeriksaan X-Ray" 
+<div class="gambar-test logbook-HHMD">
+    <img src="image/hhmdform.jpeg" 
+    alt="Gambar Form Pemeriksaan HHMD" 
     class="gambar-form">
-    
-<input type="checkbox" class = "cek test1a">
-<input type="checkbox" class = "cek test1aa">
-<input type="checkbox" class = "cek test1aaa">
-<input type="checkbox" class = "cek test1b">
-<input type="checkbox" class = "cek test1bb">
-<input type="checkbox" class = "cek test1bbb">
-<input type="checkbox" class = "cek test1bbbb">
-<input type="checkbox" class = "cek test1bbbbb">
-<input type="checkbox" class = "cek test2a">
-<input type="checkbox" class = "cek test2b">
-<input type="checkbox" class = "cek test3a">
-<input type="checkbox" class = "cek test3aa">
-<input type="checkbox" class = "cek test3aaa">
-<input type="checkbox" class = "cek test3aaaa">
-<input type="checkbox" class = "cek test3aaaaa">
-<input type="checkbox" class = "cek test3aaaaa">
-<input type="checkbox" class = "cek test3aaaaaa">
-<input type="checkbox" class = "cek test4a">
-<input type="checkbox" class = "cek test4aa">
-<input type="checkbox" class = "cek test4aaa">
-<input type="checkbox" class = "cek test4aaaa">
-<input type="checkbox" class = "cek test5a">
-<input type="checkbox" class = "cek test5aa">
+<input type="checkbox" class = "cek test1">
 </div>
 
 <div class = "hasil-box">
 <h3>Hasil Pemeriksaan</h3>
 <label>
-    <input type="checkbox" name="hasil" value="PASS"> PASS
+    <input type="radio" name="hasil" value="PASS"> PASS
 </label>
 <label>
-    <input type="checkbox" name="hasil" value="FAIL"> FAIL
+    <input type="radio" name="hasil" value="FAIL"> FAIL *: Tidak dioperasikan & dihubungi personel faskampen
 </label>
 
-<h3>Catatan</h3>
-<textarea id= "catatan" name="catatan" rows="5" cols="100" placeholder="Masukkan catatan pemeriksaan..."></textarea>
+<h3>Catatan* : Apabila salah satu test tidak terpenuhi</h3>
+<textarea 
+id="catatan"
+name="catatan" rows="5" cols="102" placeholder="Masukkan catatan pemeriksaan..."></textarea>
 </div>
 
 <h3>Personel Pengamanan Penerbangan</h3>
@@ -122,15 +105,18 @@
     <button type="button" onclick="hapusTtd('ttd2')">Hapus Tanda Tangan</button>
 </td>
 </tr>
+
 </table>
 <br><br>
 <button type="button" id="btnSimpan">Simpan</button>
 <button type="button" onclick="window.print()">Cetak</button>
 <button type="button" onclick="window.location.href='index.html'">Kembali</button>
 </main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="appcabin.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="hhmd.js"></script>
 <div id="loadingOverlay">
     <div class="loading-box">
         <div class="loading-spinner"></div>

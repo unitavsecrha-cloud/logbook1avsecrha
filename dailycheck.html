@@ -6,14 +6,20 @@
     <title>Daily Check</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="paper">
-    <header>
-        <h1> CHECK LIST PENGUJIAN HARIAN  </h1>
-        <p> MESIN X-RAY BAGASI SINGLE VIEW </p>
-        <p> PADA KONDISI NORMAL (HIJAU)</p>
-        <p> LEMBAR 1 DARI 1</p>
-    </header>
+<body class="logbook-bagasi">
+
+<header class="header-logbook">
+    <div class="header-content">
+        <div class="digital-title">DIGITAL LOGBOOK SYSTEM</div>
+        <h1>CHECK LIST PENGUJIAN HARIAN</h1>
+        <p>MESIN X-RAY BAGASI SINGLE VIEW</p>
+        <p>PADA KONDISI NORMAL (HIJAU)</p>
+        <p>LEMBAR 1 DARI 1</p>
+    </div>
+</header>
+
+<div class="paper">
+
 <main>
     <h2>Data Pemeriksaan</h2>
 
@@ -26,7 +32,7 @@
     <tr>
         <td>Tanggal & Waktu Pengujian</td>
         <td>:</td>  
-        <td><input type=datetime-local></td>
+        <td><input type="datetime-local" id="tanggal" name="tanggal"></td>
     </tr>
     <tr>
         <td> Lokasi Penempatan/Gedung</td>
@@ -72,14 +78,16 @@
 <div class = "hasil-box">
 <h3>Hasil Pemeriksaan</h3>
 <label>
-    <input type="checkbox" name="hasil" value="PASS"> PASS
+    <input type="radio" name="hasil" value="PASS"> PASS
 </label>
 <label>
-    <input type="checkbox" name="hasil" value="FAIL"> FAIL
+    <input type="radio" name="hasil" value="FAIL"> FAIL
 </label>
 
 <h3>Catatan</h3>
-<textarea name="catatan" rows="5" cols="115" placeholder="Masukkan catatan pemeriksaan..."></textarea>
+<textarea 
+id="catatan"
+name="catatan" rows="5" cols="97" placeholder="Masukkan catatan pemeriksaan..."></textarea>
 </div>
 
 <h3>Personel Pengamanan Penerbangan</h3>
@@ -91,27 +99,45 @@
 
 <tr> 
 <td>
-<input type="text" name="petugas1" placeholder="Nama Petugas 1">
+<input type="text" id="petugas1" name="petugas1" placeholder="Nama Petugas 1">
 </td>
 
-<td align="center">
-    ______________
+<td class="kolom-ttd">
+    <canvas id="ttd1" width="250" height="100" style="border:1px solid #000000;"></canvas>
+    <br>
+    <button type="button" onclick="hapusTtd('ttd1')">Hapus Tanda Tangan</button>
 </td>
 </tr>
 
+<tr>
 <td>
-    <input type="text" name="petugas2" placeholder="Nama Petugas 2">
+    <input type="text" id="petugas2" name="petugas2" placeholder="Nama Petugas 2">
 </td>
 
-<td align="center">
-    ______________
+<td class="kolom-ttd">
+    <canvas id="ttd2" width="250" height="100" style="border:1px solid #000000;"></canvas>
+    <br>
+    <button type="button" onclick="hapusTtd('ttd2')">Hapus Tanda Tangan</button>
 </td>
+</tr>
 
 </table>
 <br><br>
-<button type="button">Simpan</button>
+<button type="button" id="btnSimpan">Simpan</button>
 <button type="button" onclick="window.print()">Cetak</button>
 <button type="button" onclick="window.location.href='index.html'">Kembali</button>
 </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="js/app.js"></script>
+<div id="loadingOverlay">
+    <div class="loading-box">
+        <div class="loading-spinner"></div>
+        <div id="loadingText">Mengirim data logbook...</div>
+        <div class="loading-subtext">Mohon tunggu sebentar</div>
+    </div>
+</div>
 </body>
 </html>

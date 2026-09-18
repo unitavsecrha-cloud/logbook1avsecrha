@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LOGBOOK HARIAN POS JAGA - AVIATION SECURITY</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+   /* KERTAS LOGBOOK */
+.logbook-pos {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 35px 30px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.18);
+    overflow: hidden;
+}
+
+/* HEADER */
+.pos-header {
+    margin: 0 -35px 30px;
+    padding: 25px 35px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #0d477d, #1d70b7);
+    border-bottom: 5px solid #f2c400;
+}
+
+.pos-header h1 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.pos-header h2 {
+    margin: 4px 0;
+    font-size: 17px;
+}
+
+.pos-header div {
+    font-size: 14px;
+}
+
+    body {
+    margin: 0;
+    padding: 20px;
+    background: url("image/polosan.png") center/cover fixed no-repeat;
+}
+
+    /* KERTAS */
+    .logbook-pos {
+        position: relative;
+        max-width: 1000px;
+        margin: auto;
+        padding: 35px 40px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 8px 25px rgba(0,0,0,.18);
+        overflow: hidden;
+    }
+
+    /* HEADER */
+    .logbook-pos::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 105px;
+        background: linear-gradient(135deg, #0d477d, #1d70b7);
+        z-index: 0;
+    }
+
+    /* JUDUL */
+    .logbook-pos h1,
+    .logbook-pos h2,
+    .logbook-pos > p {
+        position: relative;
+        z-index: 1;
+    }
+
+    .logbook-pos h1 {
+        color: white;
+        margin: 0;
+        padding-top: 5px;
+        font-size: 25px;
+    }
+
+    .logbook-pos h2 {
+        color: white;
+        margin: 3px 0;
+        font-size: 17px;
+    }
+
+    .logbook-pos > p {
+        color: white;
+        margin-bottom: 70px;
+    }
+
+    /* ISI */
+    .logbook-pos label {
+        font-weight: 600;
+    }
+
+    /* BAGIAN PERSONEL */
+    .logbook-pos input,
+    .logbook-pos textarea {
+        border: 1px solid #b8c9d8;
+        border-radius: 4px;
+    }
+
+    /* TABEL */
+    .logbook-pos table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .logbook-pos th {
+        background: #dceaf5;
+        color: #123f63;
+        font-weight: bold;
+    }
+
+    .logbook-pos th,
+    .logbook-pos td {
+        border: 1px solid #7f9db5;
+        padding: 7px;
+    }
+
+    /* TOMBOL */
+    .logbook-pos button {
+        border: none;
+        border-radius: 5px;
+        padding: 8px 14px;
+        cursor: pointer;
+    }
+        .logbook-pos {
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .pos-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .pos-header h1 {
+            font-size: 20px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .pos-header h2 {
+            font-size: 17px;
+            margin: 5px 0;
+        }
+
+        .identitas-pos {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .identitas-row {
+            display: grid;
+            grid-template-columns: 160px 20px 1fr;
+            margin-bottom: 8px;
+            align-items: center;
+        }
+
+        .identitas-row input {
+            padding: 7px 9px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .personel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .personel-box {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .personel-box label {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .personel-box input {
+            padding: 8px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+        }
+
+        .judul-tabel {
+            font-weight: 700;
+            font-size: 15px;
+            margin: 20px 0 8px;
+        }
+
+        .tabel-kegiatan {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .tabel-kegiatan th,
+        .tabel-kegiatan td {
+            border: 1px solid #333;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .tabel-kegiatan th {
+            background: #dbeaf4;
+            text-align: center;
+        }
+
+        .tabel-kegiatan th:nth-child(1) {
+            width: 45px;
+        }
+
+        .tabel-kegiatan th:nth-child(2) {
+            width: 90px;
+        }
+
+        .tabel-kegiatan th:nth-child(3) {
+            width: 38%;
+        }
+
+        .tabel-kegiatan th:nth-child(4) {
+            width: 25%;
+        }
+
+        .tabel-kegiatan th:nth-child(5) {
+            width: 25%;
+        }
+
+        .tabel-kegiatan input,
+        .tabel-kegiatan textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            font-size: 12px;
+            font-family: inherit;
+            background: transparent;
+        }
+
+        .tabel-kegiatan textarea {
+            resize: vertical;
+            min-height: 38px;
+        }
+
+        .btn-tambah-kegiatan {
+            margin: 12px 0 20px;
+            padding: 9px 15px;
+            border: none;
+            border-radius: 6px;
+            background: #173f73;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .btn-tambah-kegiatan:hover {
+            background: #0f2f58;
+        }
+
+        .btn-hapus-kegiatan {
+            border: none;
+            background: #dc2626;
+            color: white;
+            border-radius: 4px;
+            padding: 4px 7px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .tanda-tangan {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1.4fr;
+            border: 1px solid #333;
+        }
+
+        .ttd-box {
+            border-right: 1px solid #333;
+            min-height: 180px;
+            text-align: center;
+        }
+
+        .ttd-box:last-child {
+            border-right: none;
+        }
+
+        .ttd-title {
+            background: #dbeaf4;
+            border-bottom: 1px solid #333;
+            padding: 6px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .canvas-wrapper {
+            padding: 5px;
+        }
+
+        .canvas-ttd {
+            width: 100%;
+            height: 100px;
+            border-bottom: 1px dashed #777;
+            touch-action: none;
+            cursor: crosshair;
+        }
+
+        .nama-ttd {
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .nama-ttd input {
+            width: 90%;
+            padding: 5px;
+            border: none;
+            border-bottom: 1px solid #333;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .btn-hapus-ttd {
+            margin-top: 5px;
+            padding: 5px 9px;
+            border: none;
+            border-radius: 4px;
+            background: #64748b;
+            color: white;
+            cursor: pointer;
+            font-size: 10px;
+        }
+
+        .koordinator-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .koordinator-nama {
+            padding: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .catatan-pos {
+            margin-top: 15px;
+        }
+
+        .catatan-pos label {
+            display: block;
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .catatan-pos textarea {
+            width: 100%;
+            min-height: 70px;
+            box-sizing: border-box;
+            padding: 8px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            resize: vertical;
+            font-family: inherit;
+        }
+.aksi-pos {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.aksi-pos button {
+    padding: 5px 9px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+        .btn-simpan-pos {
+            background: #15803d;
+        }
+
+        .btn-reset-pos {
+            background: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            .logbook-pos {
+                margin: 15px;
+            }
+
+            .personel-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tanda-tangan {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .ttd-box:nth-child(2) {
+                border-right: none;
+            }
+
+            .ttd-box:nth-child(1),
+            .ttd-box:nth-child(2) {
+                border-bottom: 1px solid #333;
+            }
+        }
+
+        @media print {
+            .btn-tambah-kegiatan,
+            .btn-hapus-kegiatan,
+            .btn-hapus-ttd,
+            .aksi-pos {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+        }
+                /* JAM JAGA */
+        #jamMulai,
+        #jamSelesai {
+            width: 180px !important;
+            display: inline-block;
+        }
+
+        #jamMulai {
+            margin-right: 8px;
+        }
+
+        #jamSelesai {
+            margin-left: 8px;
+        }
+       
+    /* PERSONEL */
+.personel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.personel-box {
+    padding: 12px;
+    background: #f4f8fb;
+    border: 1px solid #b8c9d8;
+    border-radius: 6px;
+}
+
+.personel-box label {
+    display: block;
+    margin-bottom: 6px;
+    color: #16466b;
+    font-size: 13px;
+}
+
+.personel-box input {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* TOMBOL HAPUS TABEL */
+#tabelKegiatan td:last-child {
+    width: 65px;
+    text-align: center;
+    padding: 4px;
+}
+
+#tabelKegiatan td:last-child button {
+    width: auto !important;
+    padding: 5px 9px !important;
+    font-size: 11px !important;
+    white-space: nowrap;
+}
+#loadingOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.85);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-box {
+    text-align: center;
+}
+
+.spinner {
+    width: 45px;
+    height: 45px;
+    margin: auto;
+    border: 5px solid #ddd;
+    border-top: 5px solid #333;
+    border-radius: 50%;
+    animation: putar 0.8s linear infinite;
+}
+
+.loading-text {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+@keyframes putar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+            </style>
+        </head>
+
+        <body>
+        
+
+<div class="logbook-pos">
+
+    <div class="pos-header">
+        <h1>LOGBOOK HARIAN POS JAGA</h1>
+        <h2>UNIT AVIATION SECURITY</h2>
+        <div>Bandar Udara Kelas III Raja Haji Abdullah</div>
+    </div>
+
+    <div class="identitas-pos">
+
+        <div class="identitas-row">
+            <span>Hari dan Tanggal</span>
+            <span>:</span>
+            <input type="date" id="tanggal">
+        </div>
+
+        <div class="identitas-row">
+            <span>Jam Jaga Pos</span>
+            <span>:</span>
+            <div>
+                <input type="time" id="jamMulai" value="08:00">
+                s/d
+                <input type="time" id="jamSelesai" value="16:00">
+                WIB
+            </div>
+        </div>
+
+        <div style="margin-top: 12px; font-weight: 600;">
+            Nama Personel:
+        </div>
+
+        <div class="personel-grid">
+
+            <div class="personel-box">
+                <label>Personel 1</label>
+                <input type="text" id="petugas1" placeholder="Nama personel 1">
+            </div>
+
+            <div class="personel-box">
+                <label>Personel 2</label>
+                <input type="text" id="petugas2" placeholder="Nama personel 2">
+            </div>
+
+            <div class="personel-box">
+                <label>Personel 3</label>
+                <input type="text" id="petugas3" placeholder="Nama personel 3">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="judul-tabel">
+        URAIAN KEGIATAN
+    </div>
+
+    <table class="tabel-kegiatan">
+        <thead>
+            <tr>
+                <th>NO</th>
+                <th>JAM</th>
+                <th>URAIAN KEGIATAN</th>
+                <th>TAMU / NO HP</th>
+                <th>KETERANGAN</th>
+                <th style="width: 55px;">AKSI</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabelKegiatan">
+        </tbody>
+    </table>
+
+    <button type="button" class="btn-tambah-kegiatan" onclick="tambahKegiatan()">
+        + Tambah Catatan Kegiatan
+    </button>
+
+    <div class="tanda-tangan">
+
+        <!-- PERSONEL 1 -->
+        <div class="ttd-box">
+            <div class="ttd-title">PERSONEL 1</div>
+
+            <div class="canvas-wrapper">
+                <canvas id="ttd1" class="canvas-ttd"></canvas>
+            </div>
+
+            <div class="nama-ttd">
+                <input type="text" id="namaTtd1" placeholder="Nama">
+            </div>
+
+            <button type="button" class="btn-hapus-ttd" onclick="hapusTtd('ttd1')">
+                Hapus TTD
+            </button>
+        </div>
+
+        <!-- PERSONEL 2 -->
+        <div class="ttd-box">
+            <div class="ttd-title">PERSONEL 2</div>
+
+            <div class="canvas-wrapper">
+                <canvas id="ttd2" class="canvas-ttd"></canvas>
+            </div>
+
+            <div class="nama-ttd">
+                <input type="text" id="namaTtd2" placeholder="Nama">
+            </div>
+
+            <button type="button" class="btn-hapus-ttd" onclick="hapusTtd('ttd2')">
+                Hapus TTD
+            </button>
+        </div>
+
+        <!-- PERSONEL 3 -->
+        <div class="ttd-box">
+            <div class="ttd-title">PERSONEL 3</div>
+
+            <div class="canvas-wrapper">
+                <canvas id="ttd3" class="canvas-ttd"></canvas>
+            </div>
+
+            <div class="nama-ttd">
+                <input type="text" id="namaTtd3" placeholder="Nama">
+            </div>
+
+            <button type="button" class="btn-hapus-ttd" onclick="hapusTtd('ttd3')">
+                Hapus TTD
+            </button>
+        </div>
+
+        <!-- KOORDINATOR -->
+        <div class="ttd-box koordinator-box">
+
+            <div class="ttd-title">
+                KOORDINATOR AVSEC
+            </div>
+
+            <div class="canvas-wrapper">
+    <canvas id="ttdKoordinator" class="canvas-ttd"></canvas>
+        </div>
+
+            <div class="koordinator-nama">
+                Arif Saka Buana
+            </div>
+
+            <button type="button"
+                    class="btn-hapus-ttd"
+                    onclick="hapusTtd('ttdKoordinator')">
+                Hapus TTD
+            </button>
+
+        </div>
+
+    </div>
+<div class="catatan-pos">
+    <label>Catatan:</label>
+
+    <textarea id="catatan"
+        placeholder="Tuliskan catatan tambahan jika diperlukan..."></textarea>
+</div>
+
+<div class="tombol-pos">
+    <button type="button" onclick="tombolDraft()">💾 Simpan Draft</button>
+    <button type="button" onclick="simpanPos()">📤 Kirim Logbook</button>
+    <button type="button" onclick="resetPos()">🔄 Reset</button>
+</div>
+
+
+</div>
+<button type="button" onclick="window.location.href='index.html'">
+    🏠 Kembali ke Halaman Utama
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="pos.js"></script>
+
+<div id="loadingOverlay">
+    <div class="loading-box">
+        <div class="spinner"></div>
+        <div class="loading-text">Menyimpan logbook...</div>
+    </div>
+
+    
+</div>
+</body>
+
+
+</html>
+

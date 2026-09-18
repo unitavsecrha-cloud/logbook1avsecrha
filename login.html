@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Sistem Digital</title>
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <div class="login-page">
+        <div class="login-card">
+            <!-- HEADER LOGIN -->
+            <div class="login-header">
+                <h1>LOGIN</h1>
+                <p>
+                    Silakan masuk untuk mengakses sistem
+                </p>
+            </div>
+
+
+            <!-- FORM LOGIN -->
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="username">
+                        Username
+                    </label>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Masukkan username"
+                        autocomplete="username"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="password">
+                        Password
+                    </label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Masukkan password"
+                        autocomplete="current-password"
+                    >
+                </div>
+<button type="button" id="btnLogin" class="btn-login">
+    <span id="loginText">MASUK</span>
+    <span id="loginSpinner" class="login-spinner"></span>
+</button>
+
+
+                <p
+                    id="pesanLogin"
+                    class="pesan-login">
+                </p>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <div class="login-footer">
+                <p>
+                    Unit Aviation Security
+                </p>
+                <span>
+                    Sistem Digital Tata Kelola Logbook Harian
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIN -->
+    <script src="login.js"></script>
+
+</body>
+
+</html>

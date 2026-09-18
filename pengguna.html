@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manajemen Pengguna</title>
+
+<style>
+
+.btn-nonaktif,
+.btn-aktif {
+    border: none;
+    border-radius: 6px;
+    padding: 7px 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-nonaktif {
+    background: #dc2626;
+}
+
+.btn-nonaktif:hover {
+    background: #b91c1c;
+}
+
+.btn-aktif {
+    background: #15803d;
+}
+
+.btn-aktif:hover {
+    background: #166534;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #eef3f8;
+    color: #1e293b;
+}
+
+header {
+    background: linear-gradient(135deg, #062653, #0b477d);
+    color: white;
+    text-align: center;
+    padding: 28px 20px;
+}
+
+header .digital-title {
+    font-size: 11px;
+    letter-spacing: 4px;
+    opacity: .8;
+    margin-bottom: 8px;
+}
+
+header h1 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 13px;
+    opacity: .9;
+}
+
+main {
+    width: 92%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.panel {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.08);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.panel-header h2 {
+    color: #173f73;
+    font-size: 21px;
+}
+
+#jumlahUser {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #173f73;
+    color: white;
+    padding: 12px 10px;
+    font-size: 13px;
+    text-align: left;
+}
+
+td {
+    padding: 11px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 13px;
+}
+
+tr:hover {
+    background: #f8fafc;
+}
+
+.role,
+.status {
+    font-weight: 600;
+}
+
+.status {
+    color: #15803d;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 17px;
+    background: #173f73;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.back-button:hover {
+    background: #0f2f58;
+}
+
+.loading {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+
+.error {
+    text-align: center;
+    padding: 30px;
+    color: #b91c1c;
+}
+.btn-tambah {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #173f73;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-tambah:hover {
+    background: #0f2f58;
+}
+
+.form-user {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.form-user h3 {
+    color: #173f73;
+    margin-bottom: 18px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 13px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.btn-simpan,
+.btn-batal {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-simpan {
+    background: #15803d;
+}
+
+.btn-batal {
+    background: #64748b;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-header {
+        gap: 15px;
+    }
+}
+@media (max-width: 768px) {
+    main {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .panel {
+        padding: 15px;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    th,
+    td {
+        white-space: nowrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+const roleUser = localStorage.getItem("role");
+
+if (roleUser !== "ADMIN") {
+    window.location.href = "index.html";
+}
+</script>
+
+<header>
+    <div class="digital-title">DIGITAL LOGBOOK SYSTEM</div>
+    <h1>MANAJEMEN PENGGUNA</h1>
+    <p>Digital Logbook Aviation Security</p>
+    <p>Bandar Udara Raja Haji Abdullah</p>
+</header>
+
+<main>
+    <div class="panel">
+
+        <div class="panel-header">
+    <div>
+        <h2>Daftar Pengguna</h2>
+        <span id="jumlahUser">Memuat data...</span>
+    </div>
+
+    <button type="button" class="btn-tambah" onclick="bukaFormUser()">
+        + Tambah Pengguna
+    </button>
+</div>
+<div id="formUser" class="form-user" style="display:none;">
+
+    <h3>Tambah Pengguna Baru</h3>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="usernameBaru" placeholder="Masukkan username">
+        </div>
+
+        <div class="form-group">
+            <label>Nama Lengkap</label>
+            <input type="text" id="namaBaru" placeholder="Masukkan nama lengkap">
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="passwordBaru" placeholder="Masukkan password">
+        </div>
+
+        <div class="form-group">
+            <label>Role</label>
+            <select id="roleBaru">
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="form-actions">
+        <button type="button" class="btn-simpan" onclick="simpanUser()">
+            Simpan Pengguna
+        </button>
+
+        <button type="button" class="btn-batal" onclick="tutupFormUser()">
+            Batal
+        </button>
+    </div>
+
+</div>
+
+        <div id="hasilUser">
+            <div class="loading">
+                Memuat data pengguna...
+            </div>
+        </div>
+
+        <a href="index.html" class="back-button">
+            ← Kembali ke Dashboard
+        </a>
+
+    </div>
+
+
+</main>
+
+
+<script>
+
+const WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbx1uJw8LffWSSDZomAzMeddKumTqQlntW8sjgZ4zQk_gsE2r_Fpa9SZhTvmZO70PWlxpQ/exec";
+
+function tampilkanUser() {
+
+    fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify({
+            action: "getDaftarUser"
+        })
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        console.log("DATA USER:", data);
+
+        if (data.status !== "success") {
+            throw new Error(
+                data.message || "Gagal mengambil data pengguna."
+            );
+        }
+
+        const users = data.users || [];
+
+        document.getElementById("jumlahUser").textContent =
+            users.length + " pengguna";
+
+        if (users.length === 0) {
+
+            document.getElementById("hasilUser").innerHTML =
+                `<div class="loading">
+                    Belum ada data pengguna.
+                </div>`;
+
+            return;
+        }
+
+        let html = `
+            <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Username</th>
+                        <th>Nama</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Tanggal Dibuat</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        users.forEach((user, index) => {
+
+            const tanggal = user.tanggalDibuat
+                ? new Date(user.tanggalDibuat)
+                    .toLocaleDateString("id-ID")
+                : "-";
+html += `
+    <tr>
+        <td>${index + 1}</td>
+        <td>${user.username || "-"}</td>
+        <td>${user.nama || "-"}</td>
+        <td class="role">${user.role || "-"}</td>
+        <td class="status">${user.status || "-"}</td>
+        <td>${tanggal}</td>
+        <td>
+            ${
+                user.status === "AKTIF"
+                ? `<button class="btn-nonaktif" onclick="ubahStatus('${user.username}', 'NONAKTIF')">
+                    Nonaktifkan
+                  </button>`
+                : `<button class="btn-aktif" onclick="ubahStatus('${user.username}', 'AKTIF')">
+                    Aktifkan
+                  </button>`
+            }
+        </td>
+    </tr>
+`;
+        });
+
+        html += `
+                </tbody>
+            </table>
+            </div>
+        `;
+
+        document.getElementById("hasilUser").innerHTML = html;
+
+    })
+
+    .catch(error => {
+
+        console.error("ERROR USER:", error);
+
+        document.getElementById("jumlahUser").textContent = "";
+
+        document.getElementById("hasilUser").innerHTML =
+            `<div class="error">
+                Gagal memuat data pengguna.
+            </div>`;
+    });
+}
+
+tampilkanUser();
+
+
+function bukaFormUser() {
+    document.getElementById("formUser").style.display = "block";
+}
+
+function tutupFormUser() {
+    document.getElementById("formUser").style.display = "none";
+
+    document.getElementById("usernameBaru").value = "";
+    document.getElementById("namaBaru").value = "";
+    document.getElementById("passwordBaru").value = "";
+    document.getElementById("roleBaru").value = "USER";
+}
+
+function simpanUser() {
+
+    const username = document.getElementById("usernameBaru").value.trim();
+    const nama = document.getElementById("namaBaru").value.trim();
+    const password = document.getElementById("passwordBaru").value;
+    const role = document.getElementById("roleBaru").value;
+
+    if (!username || !nama || !password) {
+        alert("Username, nama lengkap, dan password wajib diisi.");
+        return;
+    }
+
+    const konfirmasi = confirm(
+        "Apakah data pengguna sudah benar?\n\n" +
+        "Username: " + username + "\n" +
+        "Nama: " + nama + "\n" +
+        "Role: " + role
+    );
+
+    if (!konfirmasi) {
+        return;
+    }
+
+    fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify({
+            action: "tambahUser",
+            username: username,
+            nama: nama,
+            password: password,
+            role: role
+        })
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        console.log("HASIL TAMBAH USER:", data);
+
+        if (data.status !== "success") {
+            alert(data.message || "Gagal menambahkan pengguna.");
+            return;
+        }
+
+        alert("Pengguna berhasil ditambahkan.");
+
+        tutupFormUser();
+
+        tampilkanUser();
+    })
+
+    .catch(error => {
+
+        console.error("ERROR TAMBAH USER:", error);
+
+        alert("Tidak dapat terhubung ke server.");
+    });
+}
+
+
+function ubahStatus(username, statusBaru) {
+
+    const aksi = statusBaru === "NONAKTIF"
+        ? "menonaktifkan"
+        : "mengaktifkan kembali";
+
+    const konfirmasi = confirm(
+        "Apakah kamu yakin ingin " + aksi + " pengguna:\n\n" +
+        username + "?"
+    );
+
+    if (!konfirmasi) return;
+
+    fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify({
+            action: "ubahStatusUser",
+            username: username,
+            status: statusBaru
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        console.log("HASIL UBAH STATUS:", data);
+
+        if (data.status !== "success") {
+            alert(data.message || "Gagal mengubah status pengguna.");
+            return;
+        }
+
+        alert(
+            statusBaru === "NONAKTIF"
+            ? "Pengguna berhasil dinonaktifkan."
+            : "Pengguna berhasil diaktifkan kembali."
+        );
+
+        tampilkanUser();
+    })
+    .catch(error => {
+        console.error("ERROR UBAH STATUS:", error);
+        alert("Tidak dapat terhubung ke server.");
+    });
+}
+</script>
+
+</body>
+</html>

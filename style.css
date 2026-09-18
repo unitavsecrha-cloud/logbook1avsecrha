@@ -1,37 +1,497 @@
-body {background-image : url("image/polosan.png");
+body {background-image : url("image/BGDB.png");
 font-family: Arial, Helvetica, sans-serif;
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
 background-attachment: fixed;}
+/* HEADER LOGBOOK */
+header {
+    position: relative;
+    overflow: hidden;
+    height: 180px;
+    margin-left: 230px;
+    padding: 35px 40px;
+    box-sizing: border-box;
 
-header {background-color :#003366;
-color :white;
-text-align :center;
-padding :25px;}
+    background:
+        radial-gradient(
+            circle at 10% 45%,
+            rgba(40, 130, 220, 0.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 60%,
+            rgba(0, 150, 255, 0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #031f4f 0%,
+            #063b70 50%,
+            #021b45 100%
+        );
 
+    color: white;
+    text-align: center;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.18);
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.digital-title {
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    opacity: 0.85;
+}
+
+header h1 {
+    margin: 0 0 10px;
+    font-size: 27px;
+}
+
+header p {
+    margin: 3px 0;
+    font-size: 13px;
+}
+
+/* POLA DIGITAL */
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at 8% 35%,
+            rgba(143, 199, 255, 0.25) 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at 88% 45%,
+            rgba(143, 199, 255, 0.20) 0 2px,
+            transparent 3px
+        ),
+        linear-gradient(
+            120deg,
+            transparent 60%,
+            rgba(143, 199, 255, 0.06) 60%,
+            transparent 61%
+        );
+
+    background-size:
+        90px 70px,
+        110px 80px,
+        100% 100%;
+    pointer-events: none;
+}
+
+/* DIGITAL CIRCUIT KANAN */
+header .digital-lines {
+    position: absolute;
+    right: -20px;
+    bottom: 15px;
+    width: 480px;
+    height: 135px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* GARIS CIRCUIT */
+.digital-lines::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 100%;
+    height: 80px;
+
+    background:
+        linear-gradient(
+            145deg,
+            transparent 0 25%,
+            rgba(100, 190, 255, 0.35) 25.2% 25.6%,
+            transparent 25.8%
+        ),
+        linear-gradient(
+            155deg,
+            transparent 0 38%,
+            rgba(100, 190, 255, 0.30) 38.2% 38.6%,
+            transparent 38.8%
+        ),
+        linear-gradient(
+            165deg,
+            transparent 0 52%,
+            rgba(100, 190, 255, 0.25) 52.2% 52.6%,
+            transparent 52.8%
+        );
+
+    opacity: 0.8;
+}
+
+/* GARIS HORIZONTAL */
+.digital-lines::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 30px;
+    width: 360px;
+    height: 70px;
+
+    border-top: 2px solid rgba(100, 190, 255, 0.25);
+    border-bottom: 1px solid rgba(100, 190, 255, 0.15);
+
+    border-radius: 60% 0 0 60%;
+    transform: skewX(-20deg);
+}
+
+/* NODE CIRCUIT */
+.digital-lines {
+    background:
+        radial-gradient(
+            circle at 42% 45%,
+            rgba(120, 205, 255, 0.75) 0 3px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle at 58% 30%,
+            rgba(120, 205, 255, 0.65) 0 3px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle at 72% 55%,
+            rgba(120, 205, 255, 0.60) 0 3px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle at 88% 20%,
+            rgba(120, 205, 255, 0.55) 0 3px,
+            transparent 4px
+        );
+}
+/* TITIK DIGITAL */
+.digital-lines {
+    background:
+        radial-gradient(
+            circle at 55% 35%,
+            rgba(120, 205, 255, 0.55) 0 3px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle at 72% 58%,
+            rgba(120, 205, 255, 0.45) 0 3px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle at 88% 25%,
+            rgba(120, 205, 255, 0.40) 0 3px,
+            transparent 4px
+        );
+} 
+/* ELEMEN AVIATION KIRI */
+.aviation-decoration {
+    position: absolute;
+    left: 4%;
+    top: 40px;
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.radar-circle {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 115px;
+    height: 115px;
+
+    border: 1px solid rgba(143, 199, 255, 0.22);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 12px rgba(143, 199, 255, 0.045),
+        0 0 0 25px rgba(143, 199, 255, 0.025);
+}
+
+/* GARIS RADAR */
+.radar-line {
+    position: absolute;
+    left: 72px;
+    top: 15px;
+    width: 1px;
+    height: 115px;
+    background: rgba(143, 199, 255, 0.14);
+    transform: rotate(45deg);
+    transform-origin: center;
+}
+
+/* PESAWAT */
+.plane-icon {
+    position: absolute;
+    left: 125px;
+    top: 20px;
+    font-size: 40px;
+    color: rgba(143, 199, 255, 0.40);
+    transform: rotate(-15deg);
+}
+
+/* JALUR PENERBANGAN */
+.aviation-decoration::after {
+    content: "";
+    position: absolute;
+    left: 85px;
+    top: 95px;
+    width: 500px;
+    height: 400px;
+    border-top: 2px dashed rgba(143, 199, 255, 0.22);
+    border-radius: 50%;
+    transform: rotate(-15deg);
+}
+/* SILUET BANDARA */
+.airport-silhouette {
+    position: absolute;
+    left: 3%;
+    bottom: 0;
+    width: 390px;
+    height: 100px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* GEDUNG UTAMA */
+.airport-silhouette .building {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    height: 35px;
+
+    background: transparent;
+    border-top: 2px solid rgba(143, 199, 255, 0.25);
+    border-bottom: 1px solid rgba(143, 199, 255, 0.12);
+}
+
+/* CONTROL TOWER */
+.airport-silhouette .tower {
+    position: absolute;
+    left: 225px;
+    bottom: 0;
+    width: 28px;
+    height: 75px;
+
+    background: transparent;
+    border-left: 2px solid rgba(143, 199, 255, 0.25);
+    border-right: 2px solid rgba(143, 199, 255, 0.25);
+}
+
+/* KEPALA TOWER */
+.airport-silhouette .tower::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: -9px;
+    width: 44px;
+    height: 10px;
+
+    background: transparent;
+    border: 2px solid rgba(143, 199, 255, 0.28);
+    border-radius: 3px;
+}
+
+/* GARIS LANDASAN */
+.airport-silhouette .runway-line {
+    position: absolute;
+    left: 20px;
+    bottom: 8px;
+    width: 280px;
+    height: 1px;
+    background: rgba(143, 199, 255, 0.20);
+}
+
+/* DIGITAL LOGBOOK SYSTEM */
+.digital-title {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: #8fc7ff;
+}
+
+/* ELEMEN AVIATION KIRI */
+.aviation-decoration {
+    position: absolute;
+    left: 4%;
+    top: 45px;
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* LINGKARAN RADAR */
+.radar-circle {
+    position: absolute;
+    left: -40px;
+    top: 1px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(212, 219, 226, 0.28);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 15px rgba(143, 199, 255, 0.06),
+        0 0 0 32px rgba(143, 199, 255, 0.035);
+}
+
+/* GARIS RADAR */
+.radar-line {
+    position: absolute;
+    left: 70px;
+    top: 5px;
+    width: 1px;
+    height: 300px;
+    background: rgba(143, 199, 255, 0.18);
+    transform: rotate(45deg);
+    transform-origin: center;
+}
+
+/* PESAWAT */
+.plane-icon {
+    position: absolute;
+    left: 210px;
+    top: -20px;
+    font-size: 38px;
+    color: rgba(143, 199, 255, 0.35);
+    transform: rotate(-15deg);
+}
+/* SHIELD AVSEC */
+.shield-icon {
+    position: absolute;
+    left: 73px;
+    top: 70px;
+    width: 55px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0;
+    z-index: 2;
+
+    border: 2px solid rgba(143, 199, 255, 0.28);
+
+    clip-path: polygon(
+        50% 0%,
+        90% 15%,
+        85% 65%,
+        50% 100%,
+        15% 65%,
+        10% 15%
+    );
+
+    background: rgba(143, 199, 255, 0.035);
+}
+/* DIGITAL CIRCUIT KANAN */
+header .digital-lines {
+    position: absolute;
+    right: 100px;
+    bottom: 100px;
+    width: 420px;
+    height: 120px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.digital-lines::before,
+.digital-lines::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(100, 190, 255, 0.15),
+        rgba(100, 190, 255, 0.45)
+    );
+    transform: skewY(-8deg);
+}
+
+.digital-lines::before {
+    top: 35px;
+}
+
+.digital-lines::after {
+    top: 65px;
+}
+
+
+/* JUDUL UTAMA */
+
+header h1 {
+    position: relative;
+    z-index: 2;
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+
+/* KETERANGAN */
+
+header p {
+    position: relative;
+    z-index: 2;
+    margin: 5px 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.92);
+}
 
 .judul-menu h2{
     text-align :center;
     color :#000000;
+    width: 115%;
     margin-top : 20px;
 }
 
 .judul-menu p{
     text-align :center;
     color :#03243a;
+    width: 115%;
     margin-top : 10px;
 }
-.panduan{
-    text-align :center;
-    margin-top : 20px;
+.panduan {
+    width: 100%;
+    margin: 30px 0 0;
+    padding: 20px 25px;
+    box-sizing: border-box;
+    background: rgba(255,255,255,.94);
+    border: 1px solid #dbe5f0;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,.05);
 }
 
-.panduan p{
-    max-width : 600px;
-    margin : 0 auto;
-    line-height : 1.5;
-    color :#003366;
+.panduan h3 {
+    margin: 0 0 8px;
+    color: #173f73;
+    font-size: 16px;
+}
+
+.panduan p {
+    margin: 0;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.6;
 }
 nav button {
     background-color : white;
@@ -55,49 +515,243 @@ nav button:hover {
     justify-content: center;
     gap: 30px;
     padding: 30px;
+    margin-left : 230px;
+}
+/* STATISTIK DASHBOARD */
+.stats-grid {
+    width: 80%;
+max-width: 1000px;
+margin: 25px auto 10px;
+margin-left: calc(230px + 5%);
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: 0.2s ease;
+    text-align: center;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.09);
+}
+
+.stat-card > span {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    border-radius: 9px;
+    font-size: 19px;
+}
+
+.stat-card > div {
+    text-align: center;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 21px;
+    color: #173f73;
+    margin-bottom: 2px;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* TOTAL LOGBOOK */
+.stat-card:first-child {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8fbff, #ffffff);
+    border: 1px solid #dbe5f0;
+}
+
+.stat-card:first-child > span {
+    width: 52px;
+    height: 52px;
+    font-size: 25px;
+    background: #eef4fb;
+}
+
+.stat-card:first-child strong {
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 4px;
+    color: #173f73;
+}
+
+.stat-card:first-child p {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+/* RESPONSIVE TABLET */
+@media (max-width: 900px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .stat-card:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        flex-direction: row;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 8px;
+        margin: 10px 12px 10px;
+    }
+
+    .stat-card {
+        min-height: 68px;
+        padding: 10px;
+        gap: 6px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .stat-card > span {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        border-radius: 7px;
+    }
+
+    .stat-card > div {
+        text-align: center;
+    }
+
+    .stat-card strong {
+        font-size: 18px;
+    }
+
+    .stat-card p {
+        font-size: 9px;
+    }
+
+    /* TOTAL LOGBOOK */
+    .stat-card:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 18px 10px;
+        gap: 7px;
+    }
+
+    .stat-card:first-child > span {
+        width: 42px;
+        height: 42px;
+        font-size: 21px;
+    }
+
+    .stat-card:first-child strong {
+        font-size: 34px;
+    }
+
+    .stat-card:first-child p {
+        font-size: 11px;
+    }
 }
 
 .menu-card {
-    background-color: rgb(172, 182, 241);
+    background-color: white;
     width: 300px;
     min-height: 200px;
     border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px rgba(0, 0, 0, 0.1);
+    padding: 22px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
     text-align: center;
     display: flex;
     flex-direction: column;
-    border-radius: 8px;
-    transition: transform 0.2s;
-}
-.menu-card:hover {
-    transform: translateY(-5px);
+    border: 1px solid #e5e7eb;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.menu-card button{
+.menu-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.menu-card button {
     width: 100%;
     height: 40px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    background-color: #e0e7ff;
+    color: #3730a3;
+    font-weight: 600;
     cursor: pointer;
-
+    transition: 0.2s ease;
 }
+
+.menu-card button:hover {
+    opacity: 0.9;
+}
+
+.menu-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    background-color: #f1f5f9;
+    border-radius: 12px;
+}
+
 /* DAILY CHECK */
 .paper {
     background-color: white;
-    width: 900px;
-    margin: 20px auto;
-    padding: 20px;
+    width: 210mm;
+    min-height:297mm;
+    margin: 10px auto;
+    padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 td, th{
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 5px;
 }
 input {
     width: 100%;
@@ -107,10 +761,12 @@ input {
 
 .gambar-test {
     position : relative;
-    display : inline-block;
+    width:100%;
+    display : block;
+    zoom : 0.75;
 }   
 .gambar-form{
-    width : 900px;
+    width : 100%;
     display : block;
 }
 .cek{
@@ -119,91 +775,101 @@ input {
     height : 20px;
 }
 .test1a{
-    top : 380px; 
-    left : 121px;
+    top : 430px; 
+    left : 139px;
 }
 .test1aa{
-    top : 340px; 
-    left : 121px;
+    top : 385px; 
+    left : 139px;
 }
 .test1b{
-    top : 380px; 
-    left : 193px;
+    top : 385px; 
+    left : 220px;
 }
 .test1bb{
-    top : 340px; 
-    left : 193px;
+    top : 430px; 
+    left : 220px;
 }
 
 .test1bbb{
-    top : 380px; 
-    left : 255px;
+    top : 430px; 
+    left : 289px;
 }
 
 .test1bbbb{
-    top : 380px; 
-    left : 325px;
+    top : 430px; 
+    left : 369px;
 }
 
 .test2a{
-    top : 88px; 
-    left : 240px;}
+    top : 101px; 
+    left : 273px;}
 
 .test2b{
-    top : 187px; 
-    left : 367px;
+    top : 211px; 
+    left : 416px;
 }
 
 .test3a{
-    top : 89px; 
-    left :398px;
+    top : 104px; 
+    left :453px;
 }
 
 .test3aa{
-    top : 89px; 
-    left : 448px;
+    top : 104px; 
+    left : 509px;
 }
 
 .test3aaa{
-    top : 89px; 
-    left : 495px;
+    top : 104px; 
+    left : 562px;
 }
 
 .test3aaaa{
-    top : 89px; 
-    left : 544px;
+    top : 104px; 
+    left : 617px;
 }
 
 .test3aaaaa{
-    top : 89px; 
-    left : 592px;
+    top : 104px; 
+    left : 670px;
 }
 
 .test4a{
-    top : 310px; 
-    left : 528px;
+    top : 350px; 
+    left : 598px;
 }
 
 .test4aa{
-    top : 314px; 
-    left : 644px;
+    top : 358px; 
+    left : 730px;
 }
 
 .test5a{
-    top : 239px; 
-    left : 775px;
+    top : 345px; 
+    left : 880px;
 }
 
 .test5aa{
-    top : 305px; 
-    left : 775px;
+    top : 278px; 
+    left : 880px;
 }
 
 .hasil-box {
-    margin-top: 20px;
-    padding: 10px;
+    margin-top: 1px;
+    padding: 1px;
     border: 1px solid #d1cccc;
     background-color: #f9f9f9;
+}
+
+/* TTD */
+canvas {
+    border: 1px solid #000;
+    background-color: #fff;
+    cursor: crosshair;
+}
+canvas:active {
+    outline: crosshair;
 }
 
 /*PATROLI*/
@@ -213,3 +879,931 @@ input {
     padding-top: 10px;
 }
 
+/*MODE CETAK/PDF*/
+
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    body{
+        background: white;
+        margin :0;
+        padding:0;
+    }
+    .paper{
+        box-sizing:border-box;
+        width:201mm;
+        margin:0;
+        padding:6mm;
+        box-shadow:none;
+        border:none;
+        min-height:297mm;
+    }
+    button{
+        display:none;
+    }
+}
+.tabel-petugas{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+.tabel-petugas th, .tabel-petugas td{
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.tabel-petugas th {
+    text-align: left;
+    font-weight: bold;
+}
+.tabel-petugas td:first-child {
+    width: 100%;
+}
+.tabel-petugas td:last-child {
+    width: 100%;
+    text-align: center;
+}
+.tabel-petugas input [type="text"] {
+    width: 95%;
+    padding: 7px;
+    box-sizing: border-box;
+}
+.kolom-ttd canvas {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #000;
+    background-color: #fff;
+}
+.kolom-ttd button {
+    display: block;
+    margin: 5px auto;
+    padding: 5px 10px;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* CSS Logbook Cabin */
+.logbook-cabin .gambar-test {
+    position: relative;
+    width: 100%;
+    display: block;
+    zoom: 1;
+}
+
+.logbook-cabin .gambar-test .gambar-form {
+    width: 100%;
+    display: block;
+}
+
+.logbook-cabin .gambar-test .cek {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+.logbook-cabin .gambar-test .test1a {
+    top: 310px ;
+    left: 108px ;
+}
+
+.logbook-cabin .gambar-test .test1aa {
+    top: 275px ;
+    left: 108px ;
+}
+
+.logbook-cabin .gambar-test .test1aaa {
+    top: 240px ;
+    left: 108px ;
+}
+
+.logbook-cabin .gambar-test .test1b {
+    top: 310px ;
+    left: 170px ;
+}
+
+.logbook-cabin .gambar-test .test1bb {
+    top: 310px ;
+    left: 225px ;
+}
+
+.logbook-cabin .gambar-test .test1bbb {
+    top: 310px ;
+    left: 285px ;
+}
+.logbook-cabin .gambar-test .test1bbbb {
+    top: 275px ;
+    left: 225px ;
+}
+.logbook-cabin .gambar-test .test1bbbbb {
+    top: 275px ;
+    left: 170px ;
+}
+.logbook-cabin .gambar-test .test2a {
+    top: 65px ;
+    left: 211px ;
+}
+.logbook-cabin .gambar-test .test2b {
+    top: 148px ;
+    left: 321px;
+}
+.logbook-cabin .gambar-test .test3a {
+    top: 67px ;
+    left: 353px ;
+}
+.logbook-cabin .gambar-test .test3aa {
+    top: 67px ;
+    left: 395px ;
+}
+.logbook-cabin .gambar-test .test3aaa {
+    top: 67px ;
+    left: 438px ;
+}.logbook-cabin .gambar-test .test3aaaa {
+    top: 67px ;
+    left: 480px ;
+}
+.logbook-cabin .gambar-test .test3aaaaa {
+    top: 67px ;
+    left: 523px ;
+}.logbook-cabin .gambar-test .test3aaaaaa {
+    top: 67px ;
+    left: 566px ;
+}
+.logbook-cabin .gambar-test .test4a {
+    top: 193px ;
+    left: 418px ;
+}.logbook-cabin .gambar-test .test4aa {
+    top: 205px ;
+    left: 520px ;
+}.logbook-cabin .gambar-test .test4aaa {
+    top: 255px ;
+    left: 570px ;
+}.logbook-cabin .gambar-test .test4aaaa {
+    top: 250px ;
+    left: 465px ;
+}.logbook-cabin .gambar-test .test5a {
+    top: 195px ;
+    left: 685px ;
+}.logbook-cabin .gambar-test .test5aa {
+    top: 250px ;
+    left: 685px ;
+}
+/* CSS LOGBOOK HHMD */
+.logbook-HHMD .gambar-test {
+    position: relative;
+}
+
+.logbook-HHMD .cek {
+    position: absolute;
+}
+
+.logbook-HHMD .test1 {
+    top: 322px;
+    left: 519px;
+}
+
+/* CSS LOGBOOK WTMD */
+.logbook-WTMD .gambar-test {
+    position: relative;
+}       
+.logbook-WTMD .cek {
+    position: absolute;
+}
+.logbook-WTMD .test1in {
+    top: 161px;
+    left: 281px;
+}.logbook-WTMD .test1out {
+    top: 189px;
+    left: 281px;
+}.logbook-WTMD .test2in {
+    top: 230px;
+    left: 281px;
+}.logbook-WTMD .test2out {
+    top: 260px;
+    left: 281px;
+}.logbook-WTMD .test3in {
+    top: 233px;
+    left: 712px;
+}.logbook-WTMD .test3out {
+    top: 233px;
+    left: 761px;
+}.logbook-WTMD .test4in {
+    top: 427px;
+    left: 303px;
+}.logbook-WTMD .test4out {
+    top: 457px;
+    left: 303px;
+}
+.logbook-WTMD .gambar-test {
+    width: 100%;
+}
+.logbook-WTMD .gambar-form {
+    width: 105%;
+    position: relative;
+    left: -2%;
+}
+
+/* CSS Logbook Patroli */
+.table-logbook {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-logbook th,
+.table-logbook td {
+    border: 1px solid #ccc;
+    padding: 6px;
+    vertical-align: top;
+}
+.table-logbook th {
+    text-align: center;
+}
+.table-logbook input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+.table-logbook .kolom-ttd {
+    height: 130px;
+}
+.table-logbook canvas {
+    display: block;
+    width: 100%;
+    height: 90px;
+    border: none;
+    margin-top: 5px;
+}
+.table-logbook button {
+   display: block;
+    margin: 5px auto 0;
+    padding: 5px 12px;
+    background-color: #064a82;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.kolom-ttd canvas {
+    display: block;
+    width: 250px;
+    height: 100px;
+    border: 1px solid #000;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+/* CSS Logbook CCTV */
+.table-logbook .ttd-kanit {
+    width: 200px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    left: 50px;
+    top: 50px;
+}
+/* PROFILE USER */
+
+.profile-area {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 190px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.2);
+    z-index: 9999;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.profile-menu button {
+    width: 100%;
+    padding: 9px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/*loading logbook*/
+#loadingOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(3px);
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-box {
+    width: 280px;
+    padding: 28px 25px;
+    background: white;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.loading-spinner {
+    width: 42px;
+    height: 42px;
+    margin: 0 auto 18px;
+    border: 4px solid #e5e7eb;
+    border-top: 4px solid #173f73;
+    border-radius: 50%;
+    animation: loadingSpin 0.8s linear infinite;
+}
+
+@keyframes loadingSpin {
+    to {
+        transform: rotate(360deg);}
+}
+
+#loadingText {
+    font-size: 15px;
+    font-weight: 600;
+    color: #173f73;
+}
+
+.loading-subtext {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* SIDEBAR */
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    color: #173f73;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 100vh;
+    z-index: 1000;
+    padding: 30px 15px 20px;
+    background: rgba(255,255,255,0.97);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.10);
+    box-sizing: border-box;
+}
+
+
+.sidebar-title {
+    margin-bottom: 15px;
+    padding: 0 10px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #64748b;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: #173f73;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sidebar button:hover {
+    background: #eef4fb;
+}
+#panelStatistik {
+    display: none;
+}
+#panelStatistik .stat-card:first-child {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding: 20px;
+    background: linear-gradient(135deg,#f8fbff,#fff);
+    border: 1px solid #dbe5f0;
+}
+
+#panelStatistik .stat-card:first-child > span {
+    width: 52px;
+    height: 52px;
+    font-size: 25px;
+}
+
+#panelStatistik .stat-card:first-child strong {
+    font-size: 42px;
+    line-height: 1;
+}
+
+#panelStatistik .stat-card:first-child p {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* CSS sidebar */
+button#btnKembaliMenu {
+    display: none;
+    margin: 20px 30px 25px;
+    padding: 9px 16px;
+    background: #173f73;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    transition: all 0.2s ease;
+}
+button#btnKembaliMenu:hover {
+    background: #12345f;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.16);
+}
+/* RESPONSIVE SIDEBAR - HP */
+@media (max-width: 768px) {
+
+    .sidebar {
+        left: -240px;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .sidebar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header {
+        margin-left: 0;
+    }
+
+    .menu-grid {
+        margin-left: 0;
+    }
+
+    .stats-grid {
+        margin-left: 12px;
+        margin-right: 12px;
+        width: auto;
+    }
+}
+
+/* SIDEBAR BRAND */
+.sidebar-brand {
+    padding: 10px 10px 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar-brand strong {
+    display: block;
+    font-size: 16px;
+    color: #173f73;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-brand span {
+    display: block;
+    margin-top: 3px;
+    font-size: 10px;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+/* Jarak atas saat sidebar dibuka di HP */
+@media (max-width: 768px) {
+    .sidebar {
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar-brand {
+        margin-left: 55px;
+        padding-left: 0;
+    }
+}
+/* SIDEBAR DESKTOP */
+@media (min-width: 769px) {
+    .sidebar-toggle {
+        display: none;
+    }
+}
+
+/* SUBMENU LOGBOOK */
+.sidebar-menu-group {
+    margin-bottom: 8px;
+}
+
+.sidebar-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-menu-toggle span {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-submenu {
+    display: none;
+    margin-top: 3px;
+    padding-left: 8px;
+}
+
+.sidebar-submenu button {
+    padding: 9px 15px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sidebar-menu-toggle.active span {
+    transform: rotate(180deg);
+}
+
+.sidebar-submenu.active {
+    display: block;
+}
+
+/* FIX HEADER PATROLI */
+body > header {
+    width: calc(100% - 230px);
+    margin-left: 230px;
+    margin-right: 0;
+}
+
+body > .paper {
+    margin: 10px auto;
+}
+
+/* HEADER LOGBOOK */
+.header-logbook {
+    position: relative;
+    width: calc(210mm + 20px);
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 45px;
+    box-sizing: border-box;
+
+    background: linear-gradient(135deg, #062653, #0b477d);
+    color: white;
+    text-align: center;
+
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.16);
+}
+
+.header-logbook::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 15% 30%, rgba(255,255,255,.08) 1px, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,.06) 1px, transparent 2px);
+    background-size: 35px 35px;
+    pointer-events: none;
+}
+
+.header-logbook .header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.header-logbook .digital-title {
+    margin-bottom: 7px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    opacity: .8;
+}
+
+.header-logbook h1 {
+    margin: 0 0 8px;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+.header-logbook p {
+    margin: 2px 0;
+    font-size: 12px;
+    opacity: .9;
+}
+
+/* POSISI STATISTIK DI AREA SEBELAH SIDEBAR */
+@media (min-width: 769px) {
+    #panelStatistik {
+        width: min(1000px, calc(100% - 282px));
+        margin-left: max(242px, calc(242px + (100% - 242px - 1000px) / 2));
+        margin-right: auto;
+        box-sizing: border-box;
+    }
+}
+
+
+/* WELCOME DASHBOARD */
+.dashboard-welcome {
+    width: min(1000px, calc(100% - 282px));
+    margin: 25px auto 20px;
+    margin-left: max(242px, calc(242px + (100% - 242px - 1000px) / 2));
+    padding: 22px 28px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(255,255,255,.94);
+    border: 1px solid #dbe5f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+}
+
+.dashboard-welcome span {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #64748b;
+}
+
+.dashboard-welcome h2 {
+    margin: 5px 0 6px;
+    font-size: 24px;
+    color: #173f73;
+}
+
+.dashboard-welcome p {
+    margin: 0;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.welcome-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #eef4fb;
+    font-size: 27px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-welcome {
+        width: auto;
+        margin: 15px 12px;
+        padding: 18px 20px;
+    }
+
+    .dashboard-welcome h2 {
+        font-size: 20px;
+    }
+
+    .dashboard-welcome p {
+        font-size: 11px;
+        max-width: 250px;
+    }
+}
+/* DASHBOARD LOGBOOK CARD */
+#gridMenu {
+    width: min(1000px, calc(100% - 282px));
+    margin-left: max(242px, calc(242px + (100% - 242px - 1000px) / 2));
+    margin-right: auto;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+#gridMenu .menu-card {
+    min-height: 190px;
+    padding: 22px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background: rgba(255,255,255,.94);
+    border: 1px solid #dbe5f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.06);
+
+    transition: .2s ease;
+}
+
+#gridMenu .menu-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.10);
+}
+
+#gridMenu .menu-card a {
+    color: #173f73;
+    text-decoration: none;
+}
+
+#gridMenu .menu-card h3,
+#gridMenu .menu-card h2 {
+    color: #173f73;
+    text-decoration: none;
+}
+
+#gridMenu .menu-card button {
+    margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+    #gridMenu {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #gridMenu {
+        width: auto;
+        margin: 15px 12px;
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ARSIP PDF DASHBOARD */
+.arsip-dashboard {
+    width: min(1000px, calc(100% - 282px));
+    margin-left: max(242px, calc(242px + (100% - 242px - 1000px) / 2));
+    margin-right: auto;
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.arsip-dashboard .menu-card {
+    width: 320px;
+    min-height: 150px;
+}
+
+/* GRID 6 LOGBOOK */
+#gridMenu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 50px;
+    row-gap: 20px;
+}
+#gridMenu {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+/* Pastikan setiap card berada dalam grid */
+#gridMenu .menu-card {
+    width: 100%;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    #gridMenu {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #gridMenu {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) {
+    body > main .panduan {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        box-sizing: border-box;
+    }
+}
+
+@media (min-width: 769px) {
+    body > footer {
+        width: min(1000px, calc(100% - 282px));
+        margin-left: max(242px, calc(242px + (100% - 242px - 1000px) / 2));
+        margin-right: auto;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px) {
+    body > main .panduan {
+        transform: translateX(120px);
+    }
+}
+
+@media (max-width: 768px) {
+    body > footer {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+}
+
+/* KHUSUS LOGBOOK BAGASI */
+.logbook-bagasi {
+    margin: 0;
+    padding: 20px;
+    background: url("image/BGDB.png") center/cover fixed no-repeat;
+}
+
+.logbook-bagasi .paper {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    padding: 15px;
+    box-sizing: border-box;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.15);
+}
+
+.logbook-bagasi .header-logbook {
+    width: 210mm;
+    margin: 0 auto;
+}
+
+.logbook-bagasi .hasil-box {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.logbook-bagasi .kolom-ttd canvas {
+    width: 250px;
+    height: 100px;
+}
+
+.logbook-bagasi .kolom-ttd button {
+    margin: 5px auto;
+}
+
+.menu-bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(135px);  /* lebih kanan */
+    gap: 12px;
+    margin: 0 auto;
+}

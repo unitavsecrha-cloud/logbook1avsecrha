@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rekap Aktivitas Pengguna</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #eef3f8;
+    color: #1e293b;
+}
+
+header {
+    background: linear-gradient(135deg, #062653, #0b477d);
+    color: white;
+    text-align: center;
+    padding: 28px 20px;
+}
+
+header .digital-title {
+    font-size: 11px;
+    letter-spacing: 4px;
+    opacity: .8;
+    margin-bottom: 8px;
+}
+
+header h1 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 13px;
+    opacity: .9;
+}
+
+main {
+    width: 92%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.panel {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.08);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.panel-header h2 {
+    color: #173f73;
+    font-size: 21px;
+}
+
+#jumlahAktivitas {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #173f73;
+    color: white;
+    padding: 12px 10px;
+    font-size: 13px;
+    text-align: left;
+}
+
+td {
+    padding: 11px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 13px;
+}
+
+tr:hover {
+    background: #f8fafc;
+}
+
+.role {
+    font-weight: 600;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 17px;
+    background: #173f73;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.back-button:hover {
+    background: #0f2f58;
+}
+
+.loading {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+
+.error {
+    text-align: center;
+    padding: 30px;
+    color: #b91c1c;
+}
+
+@media (max-width: 768px) {
+    main {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .panel {
+        padding: 15px;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    th,
+    td {
+        white-space: nowrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+const roleUser = localStorage.getItem("role");
+
+if (roleUser !== "ADMIN") {
+    window.location.href = "index.html";
+}
+</script>
+
+<header>
+    <div class="digital-title">DIGITAL LOGBOOK SYSTEM</div>
+    <h1>REKAP AKTIVITAS PENGGUNA</h1>
+    <p>Digital Logbook Aviation Security</p>
+    <p>Bandar Udara Raja Haji Abdullah</p>
+</header>
+
+<main>
+
+    <div class="panel">
+
+        <div class="panel-header">
+            <h2>Riwayat Aktivitas</h2>
+            <span id="jumlahAktivitas">Memuat data...</span>
+        </div>
+
+        <div id="hasilAktivitas">
+            <div class="loading">
+                Memuat aktivitas pengguna...
+            </div>
+        </div>
+
+        <a href="index.html" class="back-button">
+            ← Kembali ke Dashboard
+        </a>
+
+    </div>
+
+</main>
+
+<script>
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx1uJw8LffWSSDZomAzMeddKumTqQlntW8sjgZ4zQk_gsE2r_Fpa9SZhTvmZO70PWlxpQ/exec";
+
+function tampilkanAktivitas() {
+
+    fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify({
+            action: "getAktivitas"
+        })
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        console.log("DATA AKTIVITAS:", data);
+
+        if (data.status !== "success") {
+            throw new Error(data.message || "Gagal mengambil data aktivitas.");
+        }
+
+        const aktivitas = data.aktivitas || [];
+
+        document.getElementById("jumlahAktivitas").textContent =
+            aktivitas.length + " aktivitas";
+
+        if (aktivitas.length === 0) {
+
+            document.getElementById("hasilAktivitas").innerHTML = `
+                <div class="loading">
+                    Belum ada aktivitas pengguna.
+                </div>
+            `;
+
+            return;
+        }
+
+        let html = `
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Waktu</th>
+                            <th>Username</th>
+                            <th>Nama</th>
+                            <th>Role</th>
+                            <th>Logbook</th>
+                            <th>Aktivitas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+
+        aktivitas.reverse().forEach((item, index) => {
+
+            const waktu = new Date(item.waktu);
+
+            html += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${waktu.toLocaleString("id-ID")}</td>
+                    <td>${item.username || "-"}</td>
+                    <td>${item.nama || "-"}</td>
+                    <td class="role">${item.role || "-"}</td>
+                    <td>${item.logbook || "-"}</td>
+                    <td>${item.aktivitas || "-"}</td>
+                </tr>
+            `;
+
+        });
+
+        html += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+
+        document.getElementById("hasilAktivitas").innerHTML = html;
+
+    })
+
+    .catch(error => {
+
+        console.error("ERROR AKTIVITAS:", error);
+
+        document.getElementById("jumlahAktivitas").textContent = "";
+
+        document.getElementById("hasilAktivitas").innerHTML = `
+            <div class="error">
+                Gagal memuat data aktivitas.
+            </div>
+        `;
+
+    });
+}
+
+tampilkanAktivitas();
+
+</script>
+
+</body>
+</html>

@@ -8,50 +8,380 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header> 
-        <h1>LOGBOOK AVIATION SECURITY</h1>
-        <p> Selamat datang di Sistem Digital Logbook Aviation Security</p>
-        <p> Bandar Udara Raja Haji Abdullah</p>
-    </header>
-<hr>
+
+<header>
+    <div class="aviation-decoration">
+    <div class="radar-circle"></div>
+    <div class="radar-line"></div>
+    <div class ="shield-icon">&#128737;</div>
+    <div class="plane-icon">✈</div>
+    </div>
+    <div class="airport-silhouette">
+    <div class="tower"></div>
+    <div class="building"></div>
+    <div class="runway-line"></div>
+    </div>
+    <div class="digital-title">SISTEM LOGBOOK DIGITAL</div>
+    <h1>UNIT AVIATION SECURITY</h1>
+    <p>Bandar Udara Kelas III Raja Haji Abdullah</p>
+    <p> Tanjung Balai Karimun - Kepulauan Riau</p>
+    <div class="profile-area">
+        <button class="profile-button" id="profile-button">
+            <span class ="profile-icon">&#128100;</span>
+            <span id="namaUser">User</span>
+            <span class ="profile-arrow">&#9662;</span>
+        </button>
+        <div class="profile-menu" id="profile-menu">
+        <div class="profile-info">
+            <strong id="namaProfile"></strong>
+            <span id ="roleUser">USER</span>
+        </div>
+        <hr>
+        <button id = "btnLogout">Logout</button></div>
+        </div></div>
+       
+</header>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+        <strong>DIGITAL LOGBOOK</strong>
+        <span>AVIATION SECURITY</span>
+    </div>
+
+    <div class="sidebar-title">MENU UTAMA</div>
+
+    <button onclick="window.location.href='index.html'">
+        🏠 Dashboard
+    </button>
+
+    <div class="sidebar-menu-group">
+
+    <button type="button" class="sidebar-menu-toggle" id="btnLogbook">
+        📋 LOGBOOK
+        <span>▾</span>
+    </button>
+
+    <div class="sidebar-submenu" id="submenuLogbook">
+        <button onclick="window.location.href='dailycheck.html'">
+             X-Ray Bagasi
+        </button>
+        <button onclick="window.location.href='cabincheck.html'">
+             X-Ray Cabin
+        </button>
+        <button onclick="window.location.href='cctv.html'">
+            CCTV
+        </button>
+        <button onclick="window.location.href='patroli.html'">
+            Patroli
+        </button>
+        <button onclick="window.location.href='hhmd.html'">
+            Pemeriksaan HHMD
+        </button>
+        <button onclick="window.location.href='wtmd.html'">
+            Pemeriksaan WTMD
+        </button>
+        <button onclick="window.location.href='pos.html'">
+            Pos Jaga
+        </button>
+    </div>
+
+    <div class="sidebar-title admin-menu" id="sidebarAdminTitle">
+    ADMINISTRASI
+</div>
+
+<button class="admin-menu" id="sidebarAktivitas"
+    onclick="window.location.href='aktivitas.html'">
+    📋 Rekap Aktivitas Pengguna
+</button>
+
+<button class="admin-menu" id="sidebarPengguna"
+    onclick="window.location.href='pengguna.html'">
+    👥 Manajemen Pengguna
+</button>
+
+</div>
+    <div class="sidebar-title">LAINNYA</div>
+    <button id="btnStatistik">
+        📊 Statistik
+    </button>
+    <button onclick="window.location.href='arsip.html'">
+        📁 Arsip PDF
+    </button>
+    <button onclick="logout()">
+        🚪 Logout
+    </button>
+
+</div>
+<button class="sidebar-toggle" id="sidebarToggle">☰</button>
 <main>
-<div class="judul-menu">
-<h2> Menu Utama</h2>
-<p>Silahkan pilih menu yang ingin diakses.</p>
-</div>
-<div class="menu-grid"> 
+    <!-- WELCOME DASHBOARD -->
+<section class="dashboard-welcome">
+    <div>
+        <span>WELCOME BACK</span>
+        <h2 id="welcomeNama">Selamat Datang</h2>
+        <p>
+            Kelola dan pantau seluruh pencatatan Logbook Aviation Security
+            dalam satu sistem.
+        </p>
+    </div>
 
-<div class="menu-card">
-    <a href="#"><h3>Daily Check X-Ray Bagasi</h3></a>
-    <p> Logbook Pemeriksaan X-RAY Bagasi (Standard Test Piece)</p>
-    <a href="dailycheck.html">
-    <button>Masuk</button>
-</a>
+    <div class="welcome-icon">
+        🛡️
+    </div>
+</section>
+    <div class="stats-grid" id="panelStatistik">
+    <div class="stat-card">
+        <span>📋</span>
+        <div>
+            <strong id="totalLogbook">0</strong>
+            <p>Total Logbook</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <span>📄</span>
+        <div>
+            <strong id="statBagasi">0</strong>
+            <p>X-Ray Bagasi</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <span>📄</span>
+        <div>
+            <strong id="statCabin">0</strong>
+            <p>X-Ray Cabin</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <span>📹</span>
+        <div>
+            <strong id="statCCTV">0</strong>
+            <p>Logbook CCTV</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <span>🚶</span>
+        <div>
+            <strong id="statPatroli">0</strong>
+            <p>Logbook Patroli</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <span>🔍</span>
+        <div>
+            <strong id="statHHMD">0</strong>
+            <p>Pemeriksaan HHMD</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <span>🔍</span>
+        <div>
+            <strong id="statWTMD">0</strong>
+            <p>Pemeriksaan WTMD</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <span>📄</span>
+        <div>
+            <strong id="statPos">📤</strong>
+            <p>Logbook Harian Pos Jaga</p>
+        </div>
+    </div>
 </div>
 
-<div class="menu-card">
-    <a href="#"><h3> Daily Check X-Ray Cabin</h3></a>
-    <p> Logbook Pemeriksaan X-RAY Cabin (Standard Test Piece)</p>
-    <a href="cabincheck.html">
-    <button>Masuk </button>
-</a>
+ 
+<div class="judul-menu" id="menuUtama">
+    <h2> Menu Utama</h2>
+    <p>Silahkan pilih menu yang ingin diakses.</p>
 </div>
 
-<div class="menu-card">
-    <a href="#"><h3> Patroli Airside</h3></a>
-    <p> Logbook Patroli Airside</p>
-    <a href="patroli.html">
-<button>Patroli Airside</button>
+<div class="menu-grid" id="gridMenu">
+
+    <div class="menu-card">
+        <div class="menu-icon">📄</div>
+        <h3>Daily Check X-Ray Bagasi</h3>
+        <p>Logbook Pemeriksaan X-RAY Bagasi (Standard Test Piece)</p>
+        <a href="dailycheck.html">
+            <button>Masuk</button>
+        </a>
+    </div>
+
+    <div class="menu-card">
+        <div class="menu-icon">📄</div>
+        <h3>Daily Check X-Ray Cabin</h3>
+        <p>Logbook Pemeriksaan X-RAY Cabin (Standard Test Piece)</p>
+        <a href="cabincheck.html">
+            <button>Masuk</button>
+        </a>
+    </div>
+
+    <div class="menu-card">
+        <div class="menu-icon">🚶</div>
+        <h3>Patroli Airside</h3>
+        <p>Logbook Patroli Airside</p>
+        <a href="patroli.html">
+            <button>Masuk</button>
+        </a>
+    </div>
+
+    <div class="menu-card">
+        <div class="menu-icon">📹</div>
+        <h3>Checklist CCTV</h3>
+        <p>Checklist CCTV</p>
+        <a href="cctv.html">
+            <button>Masuk</button>
+        </a>
+    </div>
+
+    <div class="menu-card">
+        <div class="menu-icon">🔍</div>
+        <h3>Daily Check Walk Through Metal Detector / WTMD</h3>
+        <p>Logbook Pemeriksaan Walk Through Metal Detector (Object Test Piece)</p>
+        <a href="wtmd.html">
+            <button>Masuk</button>
+        </a>
+    </div>
+
+    <div class="menu-card">
+        <div class="menu-icon">🔍</div>
+        <h3>Daily Check Hand Held Metal Detector / HHMD</h3>
+        <p>Logbook Pemeriksaan Hand Held Metal Detector (Object Test Piece)</p>
+        <a href="hhmd.html">
+            <button>Masuk</button>
+        </a>
+    </div>
 </div>
 
-<div class="menu-card">
-    <a href="#"><h3>Checklist CCTV</h3></a>
-    <p> Checklist CCTV</p>
-    <a href="cctv.html">
-<button>Masuk</button>
+<div class="menu-bottom">
+
+    <div class="menu-card">
+        <div class="menu-icon">📤</div>
+        <h3>Logbook Harian Pos Jaga</h3>
+        <p>Logbook Pos Jaga</p>
+        <a href="pos.html">
+            <button>Masuk</button>
+        </a>
+    </div>
+
+    <div class="menu-card">
+        <div class="menu-icon">📁</div>
+        <h3>Arsip PDF</h3>
+        <p>Melihat arsip PDF logbook yang telah tersimpan.</p>
+        <a href="arsip.html">
+            <button>Masuk</button>
+        </a>
+    </div>
+
 </div>
+       <!-- kode HTML lainnya -->
+
+    <div class="menu-card" id="menuAktivitas">
+        <div class="menu-icon">📋</div>
+        <h3>Rekap Aktivitas Pengguna</h3>
+        <p>Melihat riwayat aktivitas pengguna pada sistem digital logbook</p>
+        <a href="aktivitas.html">
+            <button>Masuk</button>
+        </a>
+    </div>
+
+    <div class="menu-card" id="menuPengguna">
+    <div class="menu-icon">👥</div>
+    <h3>Manajemen Pengguna</h3>
+    <p>Mengelola dan melihat data pengguna sistem</p>
+    <a href="pengguna.html">
+        <button>Masuk</button>
+    </a>
 </div>
 
+<script>
+const currentRoleAktivitas = localStorage.getItem("role");
+
+// CARD ADMIN DI DASHBOARD
+const cardAktivitas = document.getElementById("menuAktivitas");
+const cardPengguna = document.getElementById("menuPengguna");
+
+// SIDEBAR ADMIN
+const sidebarAktivitas = document.getElementById("sidebarAktivitas");
+const sidebarPengguna = document.getElementById("sidebarPengguna");
+const sidebarAdminTitle = document.getElementById("sidebarAdminTitle");
+
+if (currentRoleAktivitas === "ADMIN") {
+
+    if (cardAktivitas) {
+        cardAktivitas.style.display = "block";
+    }
+
+    if (cardPengguna) {
+        cardPengguna.style.display = "block";
+    }
+
+    if (sidebarAktivitas) {
+        sidebarAktivitas.style.display = "block";
+    }
+
+    if (sidebarPengguna) {
+        sidebarPengguna.style.display = "block";
+    }
+
+    if (sidebarAdminTitle) {
+        sidebarAdminTitle.style.display = "block";
+    }
+
+} else {
+
+    if (cardAktivitas) {
+        cardAktivitas.style.display = "none";
+    }
+
+    if (cardPengguna) {
+        cardPengguna.style.display = "none";
+    }
+
+    if (sidebarAktivitas) {
+        sidebarAktivitas.style.display = "none";
+    }
+
+    if (sidebarPengguna) {
+        sidebarPengguna.style.display = "none";
+    }
+
+    if (sidebarAdminTitle) {
+        sidebarAdminTitle.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>
+</div>
+
+<!--tombol kembali sidebar-->
+<button type="button" id="btnKembaliMenu"
+    style="
+        display: none;
+        margin: 20px auto 25px;
+        padding: 9px 18px;
+        background: #173f73;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    ">
+    ← Kembali ke Menu Utama
+</button>
+
+  
+<!---header panduan-->
 <div class="panduan">
     <h3>Panduan Website</h3>
     <p>Website ini digunakan sebagai sistem digital logbook aviation security untuk mencatat pemeriksaan harian fasilitas keamanan, patroli sisi udara, dan kegiatan jaga pos.</p>
@@ -62,5 +392,140 @@
     <p>Copyright &copy; 2026 LOGBOOK AVIATION SECURITY BANDAR UDARA RAJA HAJI ABDULLAH</p>
 </div>
 </footer>
+<script>
+    const namaUser = localStorage.getItem("nama");
+    const roleUser = localStorage.getItem("role");
+
+    if(!namaUser || !roleUser) {
+        window.location.href = "login.html";
+    }
+
+    document.getElementById("namaUser").textContent =
+        namaUser || "User";
+
+    document.getElementById("roleUser").textContent =
+        roleUser || "USER";
+
+    document.getElementById("welcomeNama").textContent =
+        "Selamat Datang, " + (namaUser || "User");
+
+    document.getElementById("profile-button").onclick = function () {
+        const menu = document.getElementById("profile-menu");
+
+        if (menu.style.display === "block") {
+            menu.style.display = "none";
+        } else {
+            menu.style.display = "block";
+        }
+    };
+
+    document.getElementById("btnLogout").onclick = function () {
+        localStorage.clear();
+        window.location.href = "login.html";
+    };
+
+    document.getElementById("sidebarToggle").onclick = function () {
+        document.getElementById("sidebar").classList.toggle("active");
+    };
+
+</script>
+
+<script>
+/*sambung antara index dan database user untuk menampilkan total logbook*/
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx1uJw8LffWSSDZomAzMeddKumTqQlntW8sjgZ4zQk_gsE2r_Fpa9SZhTvmZO70PWlxpQ/exec";
+fetch(WEB_APP_URL, {
+    method: "POST",
+    body: JSON.stringify({
+        action: "statistik"
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log("RESPON SERVER:", data);
+
+    if (data.status === "success") {
+    document.getElementById("totalLogbook").textContent = data.total;
+    document.getElementById("statBagasi").textContent =
+        data.detail.DATA_XRAY_BAGASI;
+    document.getElementById("statCabin").textContent =
+        data.detail.DATA_XRAY_CABIN;
+    document.getElementById("statCCTV").textContent =
+        data.detail.DATA_LOGBOOK_CCTV;
+    document.getElementById("statPatroli").textContent =
+        data.detail.DATA_LOGBOOK_PATROLI;
+    document.getElementById("statHHMD").textContent =
+        data.detail.DATA_PEMERIKSAAN_HHMD;
+    document.getElementById("statWTMD").textContent =
+        data.detail.DATA_PEMERIKSAAN_WTMD;
+}
+})
+.catch(error => {
+    console.error("Gagal mengambil statistik:", error);
+});
+document.getElementById("btnStatistik").onclick = function () {
+    const panel = document.getElementById("panelStatistik");
+    const sidebar = document.getElementById("sidebar");
+    const menuUtama = document.getElementById("menuUtama");
+    const gridMenu = document.getElementById("gridMenu");
+    const btnKembali = document.getElementById("btnKembaliMenu");
+
+    const submenu = document.getElementById("submenuLogbook");
+    const btnLogbook = document.getElementById("btnLogbook");
+
+    submenu.classList.remove("active");
+    btnLogbook.classList.remove("active");
+    
+    btnKembali.style.display = "block";
+    btnKembali.style.marginLeft = "max(242px, calc(242px + (100% - 242px - 1000px) / 2))";
+    btnKembali.style.marginRight = "auto";
+
+    menuUtama.style.display = "none";
+    gridMenu.style.display = "none";
+    document.querySelector(".arsip-dashboard").style.display = "none";
+    panel.style.display = "grid";
+    sidebar.classList.remove("active");
+
+    document.getElementById("panelStatistik").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+};
+
+document.getElementById("btnKembaliMenu").onclick = function () {
+    const panel = document.getElementById("panelStatistik");
+    const menuUtama = document.getElementById("menuUtama");
+    const gridMenu = document.getElementById("gridMenu");
+    const arsip = document.querySelector(".arsip-dashboard");
+
+    panel.style.display = "none";
+    menuUtama.style.display = "block";
+    gridMenu.style.display = "grid";
+
+    if (arsip) {
+        arsip.style.display = "block";
+    }
+
+    this.style.display = "none";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+};
+
+// SUBMENU LOGBOOK
+document.getElementById("btnLogbook").onclick = function () {
+    const submenu = document.getElementById("submenuLogbook");
+    submenu.classList.toggle("active");
+    this.classList.toggle("active");
+};
+
+//tombol logout sidebar
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+</script>
 </body>
 </html>

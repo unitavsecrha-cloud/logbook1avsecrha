@@ -6,24 +6,27 @@
     <title>CHECK LIST CLOSED CIRCUIT TELEVITION</title>
      <link rel="stylesheet" href="style.css">
 </head>
-<div class="paper">
-<header>
-    <table>
-    <p>KEMENTERIAN PERHUBUNGAN</p>
-    <p>UPBU KELAS III RAJA HAJI ABDULLAH</p>
-    <p>UNIT AVIATION SECURITY</p>
-    </table>
-</header>
 <body>
-    <div class="paper">
+
+<header class="header-logbook">
+    <div class="header-content">
+        <div class="digital-title">DIGITAL LOGBOOK SYSTEM</div>
+        <h1>LOGBOOK CCTV AVIATION SECURITY</h1>
+        <p>Kementerian Perhubungan</p>
+        <p>UPBU Kelas III Raja Haji Abdullah</p>
+        <p>Unit Aviation Security</p>
+    </div>
+</header>
+
+<div class="paper">
     <table class="table-logbook">
     <tr>
         <td><b>Tanggal dan Waktu</b></td>
-        <td><input type="datetime-local"></td>
+        <td><input type="datetime-local" id="tanggal"></td>
     </tr>
     <tr>
         <td><b>Nama Personel</b></td>
-        <td><input type="text" placeholder="Masukkan Nama Personel"></td>
+        <td><input type="text" id="petugas1" placeholder="Masukkan Nama Personel"></td>
     </tr> 
 </table>
 
@@ -208,7 +211,7 @@
     <table class ="table-logbook">
         <tr>
             <td>
-<textarea name="catatan" rows="5" cols="115" placeholder="Masukkan catatan pemeriksaan..."></textarea>
+<textarea id="catatan" name="catatan" rows="5" cols="102" placeholder="Masukkan catatan pemeriksaan..."></textarea>
 </td>
 </tr>
 </table>
@@ -220,18 +223,64 @@
     <th>Kanit AVSEC</th>
     </tr>
 <tr>
-        <td>Nama :</td>
-        <td>Nama : Arif Saka Buana</td>
+<td>
+    Nama :
+<input type="text" id="petugas1" name="petugas1" placeholder="Nama Personel 1">
+</td>
+
+<td>
+    <b>Nama :</b> Arif Saka Buana
+</td>
+</tr>
+  <tr>
+    <!-- TTD PERSONEL 1 -->
+    <td class="kolom-ttd">
+    <b>Tanda Tangan :</b>
+    <canvas 
+    id="ttd1" 
+    width="200" 
+    height="300">
+    </canvas>
+<br>
+
+<button 
+    type="button" 
+    onclick="hapusTtd('ttd1')">
+    Hapus Tanda Tangan
+    </button>
+    </td>
+
+    <!-- TTD KANIT AVSEC -->
+    <td class="kolom-ttd">
+        <b>Tanda Tangan :</b>
+
+    <img 
+    src="image/ttd_paksaka.jpg" 
+    class="ttd-kanit"
+    alt="Tanda Tangan Kanit AVSEC"
+    style="width:100px; height:100px; object-fit:contain; position:relative; left:10px; top: 20px;px;"
+    >
+</td>
 </tr>
 
-<tr>
-    <td class="ttd">Tanda Tangan :</td>
-    <td class="ttd">Tanda Tangan :</td>
-</tr>
 </table>
+
 <br><br>
-<button type="button">Simpan</button>
+<button type="button" id="btnSimpan">Simpan</button>
 <button type="button" onclick="window.print()">Cetak</button>
 <button type="button" onclick="window.location.href='index.html'">Kembali</button>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="cctv.js"></script>
+<div id="loadingOverlay">
+    <div class="loading-box">
+        <div class="loading-spinner"></div>
+        <div id="loadingText">Mengirim data logbook...</div>
+        <div class="loading-subtext">Mohon tunggu sebentar</div>
+    </div>
+</div>
 </body>
 </html>
