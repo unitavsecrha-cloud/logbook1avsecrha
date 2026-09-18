@@ -867,11 +867,12 @@ canvas {
     border: 1px solid #000;
     background-color: #fff;
     cursor: crosshair;
+    touch-action: none;
 }
+
 canvas:active {
     outline: crosshair;
 }
-
 /*PATROLI*/
 .ttd{
     height: 100px;

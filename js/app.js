@@ -154,27 +154,43 @@ function setupTandaTangan(canvasId) {
 
     let isDrawing = false;
 
-canvas.addEventListener("mousedown", function (event) {
+canvas.addEventListener("pointerdown", function (event) {
     isDrawing = true;
+    canvas.setPointerCapture(event.pointerId);
+
     const rect = canvas.getBoundingClientRect();
+
     ctx.beginPath();
-    ctx.moveTo(event.clientX - rect.left, event.clientY - rect.top);
+    ctx.moveTo(
+        event.clientX - rect.left,
+        event.clientY - rect.top
+    );
 });
 
-canvas.addEventListener("mousemove", function (event) {
+canvas.addEventListener("pointermove", function (event) {
     if (!isDrawing) return;
+
     const rect = canvas.getBoundingClientRect();
-    ctx.lineTo(event.clientX - rect.left, event.clientY - rect.top);
+
+    ctx.lineTo(
+        event.clientX - rect.left,
+        event.clientY - rect.top
+    );
+
     ctx.stroke();
 });
-canvas.addEventListener("mouseup", function () {
+
+canvas.addEventListener("pointerup", function () {
     isDrawing = false;
     ctx.closePath();
 });
-canvas.addEventListener("mouseleave", function () {
+
+canvas.addEventListener("pointercancel", function () {
     isDrawing = false;
 });
 }
+
+
     /*Jalankan untuk kedua tanda tangan*/
     setupTandaTangan("ttd1");
     setupTandaTangan("ttd2");
@@ -214,18 +230,14 @@ if (sidebarToggle) {
         document.getElementById("sidebar").classList.toggle("active");
     };
 }
-
 const btnStatistik = document.getElementById("btnStatistik");
 
 if (btnStatistik) {
     btnStatistik.onclick = function () {
-        const statsGrid = document.querySelector(".stats-grid");
-
-        if (statsGrid) {
-            statsGrid.scrollIntoView({
-                behavior: "smooth"
-            });
-        }
+        document.getElementById("panelStatistik").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     };
 }
 
