@@ -526,6 +526,27 @@ function logout() {
     localStorage.clear();
     window.location.href = "login.html";
 }
+
+const panel = document.getElementById("panelStatistik");
+const menuUtama = document.getElementById("menuUtama");
+const gridMenu = document.getElementById("gridMenu");
+const btnKembali = document.getElementById("btnKembaliMenu");
+
+document.getElementById("btnStatistik").onclick = function () {
+    panel.style.display = "grid";
+    menuUtama.style.display = "none";
+    gridMenu.style.display = "none";
+    btnKembali.style.display = "block";
+
+    panel.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+};
+
+if (window.location.hash === "#panelStatistik") {
+    document.getElementById("btnStatistik").click();
+}
 </script>
 </body>
 </html>
