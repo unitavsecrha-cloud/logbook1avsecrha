@@ -93,6 +93,19 @@ async function buatPDF() {
         wrapper.style.background = "#ffffff";
         wrapper.appendChild(header.cloneNode(true));
         wrapper.appendChild(paper.cloneNode(true));
+        const canvasAsli = document.querySelectorAll("canvas");
+        const canvasClone = wrapper.querySelectorAll("canvas");
+
+        canvasAsli.forEach((asli, i) => {
+            const clone = canvasClone[i];
+            if (!clone) return;
+
+            clone.width = asli.width;
+            clone.height = asli.height;
+
+            const ctxClone = clone.getContext("2d");
+            ctxClone.drawImage(asli, 0, 0);
+        });
         document.body.appendChild(wrapper);
 
         const canvas = await html2canvas(wrapper, {
@@ -155,27 +168,39 @@ function setupTandaTangan(canvasId) {
 
     let isDrawing = false;
 
-canvas.addEventListener("mousedown", function (event) {
+canvas.addEventListener("pointerdown", function (event) {
     isDrawing = true;
+    canvas.setPointerCapture(event.pointerId);
+
     const rect = canvas.getBoundingClientRect();
+
     ctx.beginPath();
-    ctx.moveTo(event.clientX - rect.left, event.clientY - rect.top);
+    ctx.moveTo(
+        event.clientX - rect.left,
+        event.clientY - rect.top
+    );
 });
 
-canvas.addEventListener("mousemove", function (event) {
+canvas.addEventListener("pointermove", function (event) {
     if (!isDrawing) return;
     const rect = canvas.getBoundingClientRect();
-    ctx.lineTo(event.clientX - rect.left, event.clientY - rect.top);
+    ctx.lineTo(
+        event.clientX - rect.left,
+        event.clientY - rect.top
+    );
     ctx.stroke();
 });
-canvas.addEventListener("mouseup", function () {
+
+canvas.addEventListener("pointerup", function () {
     isDrawing = false;
     ctx.closePath();
 });
-canvas.addEventListener("mouseleave", function () {
+
+canvas.addEventListener("pointercancel", function () {
     isDrawing = false;
 });
 }
+
     /*Jalankan untuk kedua tanda tangan*/
     setupTandaTangan("ttd1");
     setupTandaTangan("ttd2");

@@ -334,23 +334,44 @@ function lihatArsipCabin() {
                     <span>${data.arsip.length} PDF</span>
                 </div>
         `;
+//per folder
+       const kelompok = {};
 
-        data.arsip.forEach(file => {
-            html += `
-                <div class="arsip-item">
-                    <div class="file-info">
-                        <div class="file-icon">📄</div>
-                        <div>
-                            <strong>${file.nama}</strong>
-                            <span>${file.folder}</span>
-                        </div>
+data.arsip.forEach(file => {
+    if (!kelompok[file.folder]) {
+        kelompok[file.folder] = [];
+    }
+
+    kelompok[file.folder].push(file);
+});
+
+Object.keys(kelompok).forEach(folder => {
+
+    html += `
+        <div class="folder-arsip">
+            <h3>📁 ${folder}</h3>
+    `;
+
+    kelompok[folder].forEach(file => {
+
+        html += `
+            <div class="arsip-item">
+                <div class="file-info">
+                    <div class="file-icon">📄</div>
+                    <div>
+                        <strong>${file.nama}</strong>
                     </div>
-                    <a href="${file.url}" target="_blank" class="btn-pdf">
-                        Buka PDF
-                    </a>
                 </div>
-            `;
-        });
+
+                <a href="${file.url}" target="_blank" class="btn-pdf">
+                    Buka PDF
+                </a>
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+});
 
         html += `</div>`;
 
@@ -420,22 +441,44 @@ function lihatArsipWtmd() {
                 </div>
         `;
 
-        data.arsip.forEach(file => {
-            html += `
-                <div class="arsip-item">
-                    <div class="file-info">
-                        <div class="file-icon">📄</div>
-                        <div>
-                            <strong>${file.nama}</strong>
-                            <span>${file.folder}</span>
-                        </div>
+//per folder
+        const kelompok = {};
+
+data.arsip.forEach(file => {
+    if (!kelompok[file.folder]) {
+        kelompok[file.folder] = [];
+    }
+
+    kelompok[file.folder].push(file);
+});
+
+Object.keys(kelompok).forEach(folder => {
+
+    html += `
+        <div class="folder-arsip">
+            <h3>📁 ${folder}</h3>
+    `;
+
+    kelompok[folder].forEach(file => {
+
+        html += `
+            <div class="arsip-item">
+                <div class="file-info">
+                    <div class="file-icon">📄</div>
+                    <div>
+                        <strong>${file.nama}</strong>
                     </div>
-                    <a href="${file.url}" target="_blank" class="btn-pdf">
-                        Buka PDF
-                    </a>
                 </div>
-            `;
-        });
+
+                <a href="${file.url}" target="_blank" class="btn-pdf">
+                    Buka PDF
+                </a>
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+});
 
         html += `</div>`;
 
@@ -505,24 +548,44 @@ function lihatArsipHhmd() {
                     <span>${data.arsip.length} PDF</span>
                 </div>
         `;
+//per folder
+        const kelompok = {};
 
-        data.arsip.forEach(file => {
-            html += `
-                <div class="arsip-item">
-                    <div class="file-info">
-                        <div class="file-icon">📄</div>
-                        <div>
-                            <strong>${file.nama}</strong>
-                            <span>${file.folder}</span>
-                        </div>
+data.arsip.forEach(file => {
+    if (!kelompok[file.folder]) {
+        kelompok[file.folder] = [];
+    }
+
+    kelompok[file.folder].push(file);
+});
+
+Object.keys(kelompok).forEach(folder => {
+
+    html += `
+        <div class="folder-arsip">
+            <h3>📁 ${folder}</h3>
+    `;
+
+    kelompok[folder].forEach(file => {
+
+        html += `
+            <div class="arsip-item">
+                <div class="file-info">
+                    <div class="file-icon">📄</div>
+                    <div>
+                        <strong>${file.nama}</strong>
                     </div>
-                    <a href="${file.url}" target="_blank" class="btn-pdf">
-                        Buka PDF
-                    </a>
                 </div>
-            `;
-        });
 
+                <a href="${file.url}" target="_blank" class="btn-pdf">
+                    Buka PDF
+                </a>
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+});
         html += `</div>`;
 
         container.innerHTML = html;
@@ -591,23 +654,44 @@ function lihatArsipCctv() {
                     <span>${data.arsip.length} PDF</span>
                 </div>
         `;
+const kelompok = {};
 
-        data.arsip.forEach(file => {
-            html += `
-                <div class="arsip-item">
-                    <div class="file-info">
-                        <div class="file-icon">📄</div>
-                        <div>
-                            <strong>${file.nama}</strong>
-                            <span>${file.folder}</span>
-                        </div>
+//per folder
+data.arsip.forEach(file => {
+    if (!kelompok[file.folder]) {
+        kelompok[file.folder] = [];
+    }
+
+    kelompok[file.folder].push(file);
+});
+
+Object.keys(kelompok).forEach(folder => {
+
+    html += `
+        <div class="folder-arsip">
+            <h3>📁 ${folder}</h3>
+    `;
+
+    kelompok[folder].forEach(file => {
+
+        html += `
+            <div class="arsip-item">
+                <div class="file-info">
+                    <div class="file-icon">📄</div>
+                    <div>
+                        <strong>${file.nama}</strong>
                     </div>
-                    <a href="${file.url}" target="_blank" class="btn-pdf">
-                        Buka PDF
-                    </a>
                 </div>
-            `;
-        });
+
+                <a href="${file.url}" target="_blank" class="btn-pdf">
+                    Buka PDF
+                </a>
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+});
 
         html += `</div>`;
 
@@ -677,22 +761,45 @@ function lihatArsipPatroli() {
                 </div>
         `;
 
-        data.arsip.forEach(file => {
-            html += `
-                <div class="arsip-item">
-                    <div class="file-info">
-                        <div class="file-icon">📄</div>
-                        <div>
-                            <strong>${file.nama}</strong>
-                            <span>${file.folder}</span>
-                        </div>
+
+//per folder
+const kelompok = {};
+
+data.arsip.forEach(file => {
+    if (!kelompok[file.folder]) {
+        kelompok[file.folder] = [];
+    }
+
+    kelompok[file.folder].push(file);
+});
+
+Object.keys(kelompok).forEach(folder => {
+
+    html += `
+        <div class="folder-arsip">
+            <h3>📁 ${folder}</h3>
+    `;
+
+    kelompok[folder].forEach(file => {
+
+        html += `
+            <div class="arsip-item">
+                <div class="file-info">
+                    <div class="file-icon">📄</div>
+                    <div>
+                        <strong>${file.nama}</strong>
                     </div>
-                    <a href="${file.url}" target="_blank" class="btn-pdf">
-                        Buka PDF
-                    </a>
                 </div>
-            `;
-        });
+
+                <a href="${file.url}" target="_blank" class="btn-pdf">
+                    Buka PDF
+                </a>
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+});
 
         html += `</div>`;
 

@@ -92,6 +92,19 @@ async function buatPDF() {
         wrapper.style.background = "#ffffff";
         wrapper.appendChild(header.cloneNode(true));
         wrapper.appendChild(paper.cloneNode(true));
+        const canvasAsli = document.querySelectorAll("canvas");
+        const canvasClone = wrapper.querySelectorAll("canvas");
+
+        canvasAsli.forEach((asli, i) => {
+            const clone = canvasClone[i];
+            if (!clone) return;
+
+            clone.width = asli.width;
+            clone.height = asli.height;
+
+            const ctxClone = clone.getContext("2d");
+            ctxClone.drawImage(asli, 0, 0);
+        });
         document.body.appendChild(wrapper);
 
         const canvas = await html2canvas(wrapper, {

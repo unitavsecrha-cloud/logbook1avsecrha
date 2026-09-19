@@ -222,6 +222,17 @@ async function buatPDF() {
 
         const clone = logbook.cloneNode(true);
 
+        const wrapper = document.createElement("div");
+
+        wrapper.style.background = "#ffffff";
+        wrapper.style.position = "absolute";
+        wrapper.style.left = "-99999px";
+        wrapper.style.top = "0";
+
+        wrapper.appendChild(clone);
+        document.body.appendChild(wrapper);
+
+        // COPY ISI TTD KE CLONE
         const canvasAsli = logbook.querySelectorAll("canvas");
         const canvasClone = clone.querySelectorAll("canvas");
 
@@ -236,16 +247,6 @@ async function buatPDF() {
             const ctx = target.getContext("2d");
             ctx.drawImage(canvas, 0, 0);
         });
-
-        const wrapper = document.createElement("div");
-
-        wrapper.style.background = "#ffffff";
-        wrapper.style.position = "absolute";
-        wrapper.style.left = "-99999px";
-        wrapper.style.top = "0";
-        wrapper.appendChild(clone);
-
-        document.body.appendChild(wrapper);
 
         const hasilCanvas = await html2canvas(wrapper, {
             scale: 2,
@@ -281,14 +282,7 @@ async function buatPDF() {
         const x = (pageWidth - imgWidth) / 2;
         const y = (pageHeight - imgHeight) / 2;
 
-        pdf.addImage(
-            imgData,
-            "JPEG",
-            x,
-            y,
-            imgWidth,
-            imgHeight
-        );
+        pdf.addImage(imgData, "JPEG", x, y, imgWidth, imgHeight);
 
         console.log("PDF berhasil dibuat.");
 
@@ -407,10 +401,11 @@ async function simpanPos() {
     alert(
         "Gagal menyimpan logbook."
     );
-}
+}}
 
-function hapusTtd(id) {
-    const canvas = document.getElementById(id);
+function hapusTtd(canvasId) {
+    const canvas = document.getElementById(canvasId);
+
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
@@ -425,4 +420,4 @@ function tampilkanLoading() {
 function sembunyikanLoading() {
     const loading = document.getElementById("loadingOverlay");
     if (loading) loading.style.display = "none";
-}}
+}

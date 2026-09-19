@@ -87,6 +87,19 @@ async function buatPDF() {
         wrapper.style.background = "#ffffff";
         wrapper.appendChild(header.cloneNode(true));
         wrapper.appendChild(paper.cloneNode(true));
+        const canvasAsli = document.querySelectorAll("canvas");
+        const canvasClone = wrapper.querySelectorAll("canvas");
+
+        canvasAsli.forEach((asli, i) => {
+            const clone = canvasClone[i];
+            if (!clone) return;
+
+            clone.width = asli.width;
+            clone.height = asli.height;
+
+            const ctx = clone.getContext("2d");
+            ctx.drawImage(asli, 0, 0);
+        });
         document.body.appendChild(wrapper);
 
         const canvas = await html2canvas(wrapper, {
@@ -149,12 +162,14 @@ function setupTandaTangan(canvasId) {
 
     const ctx = canvas.getContext("2d");
 
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 1.5;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.strokeStyle = "#000000";
 
     let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
 
     function mulaiGambar(e) {
         isDrawing = true;
@@ -162,34 +177,54 @@ function setupTandaTangan(canvasId) {
         const rect = canvas.getBoundingClientRect();
 
         ctx.beginPath();
-        ctx.moveTo(
-            e.clientX - rect.left,
-            e.clientY - rect.top
+       ctx.moveTo(
+            (e.clientX - rect.left) * (canvas.width / rect.width),
+            (e.clientY - rect.top) * (canvas.height / rect.height)
         );
     }
 
     function gambar(e) {
-        if (!isDrawing) return;
+    if (!isDrawing) return;
 
-        const rect = canvas.getBoundingClientRect();
+    const rect = canvas.getBoundingClientRect();
 
-        ctx.lineTo(
-            e.clientX - rect.left,
-            e.clientY - rect.top
-        );
+    const x = (e.clientX - rect.left) * (canvas.width / rect.width);
+    const y = (e.clientY - rect.top) * (canvas.height / rect.height);
 
-        ctx.stroke();
-    }
+    if (Math.abs(x - lastX) < 15 && Math.abs(y - lastY) < 15) return;
+
+    ctx.lineTo(x, y);
+    ctx.stroke();
+
+    lastX = x;
+    lastY = y;
+}
 
     function selesaiGambar() {
         isDrawing = false;
         ctx.closePath();
     }
 
-    canvas.addEventListener("mousedown", mulaiGambar);
-    canvas.addEventListener("mousemove", gambar);
-    canvas.addEventListener("mouseup", selesaiGambar);
-    canvas.addEventListener("mouseleave", selesaiGambar);
+    canvas.addEventListener("pointerdown", function (e) {
+        isDrawing = true;
+        canvas.setPointerCapture(e.pointerId);
+
+        const rect = canvas.getBoundingClientRect();
+
+        ctx.beginPath();
+        ctx.moveTo(
+            (e.clientX - rect.left) * (canvas.width / rect.width),
+            (e.clientY - rect.top) * (canvas.height / rect.height)
+        );
+
+        lastX = (e.clientX - rect.left) * (canvas.width / rect.width);
+        lastY = (e.clientY - rect.top) * (canvas.height / rect.height);
+    });
+
+canvas.addEventListener("pointermove", gambar);
+
+canvas.addEventListener("pointerup", selesaiGambar);
+canvas.addEventListener("pointercancel", selesaiGambar);
 
     console.log("TTD aktif:", canvasId);
 }
