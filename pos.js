@@ -153,7 +153,7 @@ function resetPos() {
 
 // TANDA TANGAN
 
-["ttd1", "ttd2", "ttd3", "ttdKoordinator"].forEach(id => {
+["ttd1", "ttd2", "ttd3"].forEach(id => {
 
     const c = document.getElementById(id);
     if (!c) return;
