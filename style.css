@@ -1194,17 +1194,41 @@ canvas:active {
     top: 50px;
     right: 0;
     width: 190px;
-    padding: 15px;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 12px 15px;
+    margin: 0;
     background: white;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0,0,0,.2);
     z-index: 9999;
+    box-sizing: border-box;
+}
+.profile-menu .profile-info {
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0;
+    padding: 0;
 }
 
+.profile-menu hr {
+    margin: 6px 0;
+}
+
+.profile-menu button {
+    margin: 0;
+}
 .profile-info {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+.profile-menu hr {
+    margin: 8px 0;
 }
 
 .profile-menu button {
@@ -1899,4 +1923,3 @@ body > .paper {
         white-space: nowrap;
     }
 
-}
