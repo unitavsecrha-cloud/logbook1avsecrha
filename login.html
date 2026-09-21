@@ -53,6 +53,21 @@
     <span id="loginText">MASUK</span>
     <span id="loginSpinner" class="login-spinner"></span>
 </button>
+<button type="button" id="btnPanduan" class="btn-tanya">i</button>
+
+<div id="modalPanduan" class="modal-panduan">
+    <div class="isi-panduan">
+        <button type="button" id="tutupPanduan" class="tutup-panduan">×</button>
+
+        <h3>📖 Reminder</h3>
+        <p>Jika Terdapat Kendala Pada Saat Login, Silahkan Menghubungi Admin Pengelola Logbook Digital Unit Aviation Security</p>
+        
+
+        <a href="panduan.html" class="panduan-lengkap">
+            Lihat Panduan Lengkap
+        </a>
+    </div>
+</div>
 
 
                 <p
@@ -81,6 +96,26 @@
 
     <!-- JAVASCRIPT LOGIN -->
     <script src="login.js"></script>
+    <script>
+        const btnPanduan = document.getElementById("btnPanduan");
+const modalPanduan = document.getElementById("modalPanduan");
+const tutupPanduan = document.getElementById("tutupPanduan");
+
+btnPanduan.onclick = () => {
+    modalPanduan.style.display = "flex";
+};
+
+tutupPanduan.onclick = () => {
+    modalPanduan.style.display = "none";
+};
+
+modalPanduan.onclick = (e) => {
+    if (e.target === modalPanduan) {
+        modalPanduan.style.display = "none";
+    }
+};
+    </script>
+
 
 </body>
 

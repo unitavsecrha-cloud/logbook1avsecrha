@@ -155,7 +155,7 @@ async function buatPDF() {
         tampilkanLoading();
     }
 }
-/*Tanda Tangan Digital*/
+/* Tanda Tangan Digital */
 
 function setupTandaTangan(canvasId) {
     const canvas = document.getElementById(canvasId);
@@ -210,14 +210,29 @@ function setupTandaTangan(canvasId) {
         ctx.closePath();
     }
 
-    canvas.addEventListener("mousedown", mulaiGambar);
-    canvas.addEventListener("mousemove", gambar);
-    canvas.addEventListener("mouseup", selesaiGambar);
-    canvas.addEventListener("mouseleave", selesaiGambar);
+    canvas.addEventListener("pointerdown", function (e) {
+        isDrawing = true;
+        canvas.setPointerCapture(e.pointerId);
+
+        const rect = canvas.getBoundingClientRect();
+
+        ctx.beginPath();
+        ctx.moveTo(
+            (e.clientX - rect.left) * (canvas.width / rect.width),
+            (e.clientY - rect.top) * (canvas.height / rect.height)
+        );
+
+        lastX = (e.clientX - rect.left) * (canvas.width / rect.width);
+        lastY = (e.clientY - rect.top) * (canvas.height / rect.height);
+    });
+
+canvas.addEventListener("pointermove", gambar);
+
+canvas.addEventListener("pointerup", selesaiGambar);
+canvas.addEventListener("pointercancel", selesaiGambar);
 
     console.log("TTD aktif:", canvasId);
 }
-
 
 /* Aktifkan 3 tanda tangan */
 setupTandaTangan("ttd1");

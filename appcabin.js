@@ -29,7 +29,7 @@ const dataPemeriksaan={
     petugas1,
     petugas2,
     catatan,
-};
+}
 console.log(dataPemeriksaan);
 kirimData(dataPemeriksaan);
 });

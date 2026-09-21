@@ -165,26 +165,55 @@ function resetPos() {
 
     ctx.lineWidth = 2;
     ctx.lineCap = "round";
+    ctx.lineJoin = "round";
 
     let gambar = false;
 
-    c.onmousedown = e => {
-        gambar = true;
-        ctx.beginPath();
-        ctx.moveTo(e.offsetX, e.offsetY);
-    };
+    function posisi(e) {
+        const rect = c.getBoundingClientRect();
 
-    c.onmousemove = e => {
+        return {
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        };
+    }
+
+    c.addEventListener("pointerdown", e => {
+
+        gambar = true;
+
+        const pos = posisi(e);
+
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+
+        e.preventDefault();
+    });
+
+    c.addEventListener("pointermove", e => {
+
         if (!gambar) return;
 
-        ctx.lineTo(e.offsetX, e.offsetY);
+        const pos = posisi(e);
+
+        ctx.lineTo(pos.x, pos.y);
         ctx.stroke();
-    };
 
-    c.onmouseup = () => gambar = false;
-    c.onmouseleave = () => gambar = false;
+        e.preventDefault();
+    });
+
+    c.addEventListener("pointerup", () => {
+        gambar = false;
+    });
+
+    c.addEventListener("pointerleave", () => {
+        gambar = false;
+    });
+
+    c.addEventListener("pointercancel", () => {
+        gambar = false;
+    });
 });
-
 
 // TTD KOORDINATOR
 

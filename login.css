@@ -247,3 +247,80 @@ body {
 .sidebar button:hover {
     background: #eef4fb;
 }
+
+.btn-panduan {
+    display: block;
+    margin-top: 12px;
+    text-align: center;
+    text-decoration: none;
+    color: #0b3d91;
+    font-weight: bold;
+}
+
+.btn-tanya {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: #fafaf9;
+    color: rgb(9, 3, 62);
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    margin: 0;
+
+}
+
+.modal-panduan {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.isi-panduan {
+    position: relative;
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.isi-panduan h3 {
+    margin-top: 0;
+    color: #0b3d91;
+}
+
+.isi-panduan p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.tutup-panduan {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    border: none;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: #777;
+}
+
+.panduan-lengkap {
+    display: block;
+    margin-top: 18px;
+    text-align: center;
+    color: #0b3d91;
+    font-weight: bold;
+    text-decoration: none;
+}
